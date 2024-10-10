@@ -13,7 +13,7 @@ public class DatabaseConfig {
 	private String password;
 	
 	private DatabaseConfig() {
-		url = "jdbc:mqsql://localhost:3306/itp_servlet";
+		url = "jdbc:mysql://localhost:3306/itp_servlet";
 		username = "root";
 		password = "root";
 	}

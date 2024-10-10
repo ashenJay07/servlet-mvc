@@ -1,21 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-  <servlet>
-    <servlet-name>index</servlet-name>
-    <jsp-file>/pages/package.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>index</servlet-name>
-    <url-pattern>/package</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>payment</servlet-name>
-    <jsp-file>/pages/payment.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>payment</servlet-name>
-    <url-pattern>/payment</url-pattern>
-  </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>PackageServlet</display-name>
@@ -26,4 +11,14 @@
     <servlet-name>PackageServlet</servlet-name>
     <url-pattern></url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>payment</servlet-name>
+    <jsp-file>/pages/payment.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>payment</servlet-name>
+    <url-pattern>/payment</url-pattern>
+  </servlet-mapping>
+
 </web-app>
