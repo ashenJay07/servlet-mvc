@@ -1,4 +1,4 @@
-package com.epay.utils;
+package com.epay.model;
 
 public class PaymentInfo {
 	private float transAmount;

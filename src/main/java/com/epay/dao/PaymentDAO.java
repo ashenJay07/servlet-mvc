@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.epay.model.Package;
+import com.epay.model.PaymentInfo;
 import com.epay.utils.DatabaseConfig;
-import com.epay.utils.PaymentInfo;
 
 public class PaymentDAO {
 	
@@ -23,15 +23,6 @@ public class PaymentDAO {
 		try(Connection connection = dbInstance.getConnection()) {
 			
 			PreparedStatement stmtTransaction = connection.prepareStatement(INSERT_TRANSACTION_INFO);
-//			stmtTransaction.setFloat(1, 250.0f);
-//			stmtTransaction.setString(2, "John Doe");
-//			stmtTransaction.setString(3, "john@email.com");
-//			stmtTransaction.setString(4, "1234567812345678");
-//			stmtTransaction.setInt(5, 8);
-//			stmtTransaction.setInt(6, 2024);
-//			stmtTransaction.setString(7, "345");
-//			stmtTransaction.setString(8, "2024-10-05");
-//			stmtTransaction.setString(9, "UID0001");
 			
 			stmtTransaction.setFloat(1, formData.getTransAmount());
 			stmtTransaction.setString(2, formData.getCardHolder());
