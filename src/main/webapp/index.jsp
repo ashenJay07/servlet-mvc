@@ -7,7 +7,7 @@
 <html>
   <head>
     <meta charset="ISO-8859-1" />
-    <title>Insert title here</title>
+    <title>ePay | packages</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -40,6 +40,8 @@
         </div>
       </c:forEach>
     </div>
+    
+    <a href="payment">Go to payment</a>
   </body>
 </html>
 

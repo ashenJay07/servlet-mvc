@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+
+.form-wrapper {
+  padding: 70px 150px;
+}
+
+.payment-info-form {
+  width: 40vw;
+  margin: auto;
+}
+
+.payment-info-form label {
+  font-size: 14px;
+}
+
+.card-expire {
+  display: flex;
+  gap: 20px;
+}
+
+.card-expire > div {
+  flex: 1;
+}
