@@ -1,4 +1,4 @@
-package com.itpproject.utils;
+package com.epay.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

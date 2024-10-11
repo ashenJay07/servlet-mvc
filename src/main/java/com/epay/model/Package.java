@@ -1,4 +1,4 @@
-package com.itpproject.model;
+package com.epay.model;
 
 public class Package {
 	private int id;

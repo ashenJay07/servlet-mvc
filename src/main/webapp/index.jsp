@@ -1,28 +1,45 @@
-<!--prettier-ignore-->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
     
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="ISO-8859-1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-    	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/common.css" />
-    <link rel="stylesheet" href="styles/index.css" />
-    
-    <title>ITP Project</title>
+    <title>Insert title here</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/oop-epay-crud/css/common.css" />
+    <link rel="stylesheet" href="/oop-epay-crud/css/index.css" />
   </head>
   <body>
-    <div class="service-container">
-      <a href="pages/package.jsp">
-      	<div class="service">Unlimited Blaster</div>
-      </a>
-      <div class="service">Fun Blaster</div>
-      <div class="service">Roaming</div>
-      <div class="service">E-doc Service</div>
-      <div class="service">Upahara Service</div>
+    <div class="package-wrapper">
+      <c:forEach var="cusPackage" items="${pkgInstances}">
+        <div class="package-container">
+          <h2 class="pkg-title">${cusPackage.packageName}</h2>
+          <ul class="pkg-details">
+            <c:forEach var="detail" items="${cusPackage.packageDetails}">
+              <li>${detail}</li>
+            </c:forEach>
+          </ul>
+          <div class="pkg-footer">
+            <span class="pkg-price"
+              >Rs. <fmt:formatNumber
+                value="${cusPackage.packagePrice}"
+                pattern="0.00"
+            /></span>
+            <button type="button" class="btn btn-success btn-lg">
+              Activate
+            </button>
+          </div>
+        </div>
+      </c:forEach>
     </div>
   </body>
 </html>
+

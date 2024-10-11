@@ -1,6 +1,6 @@
-package com.itpproject.utils.packages;
+package com.epay.utils.packages;
 
-public class UnlimitedBlaster implements Package {
+public class UnlimitedBlaster {
 	private static UnlimitedBlaster instance;
 	
 	private String packageName = "Unlimited Blaster";
@@ -20,17 +20,14 @@ public class UnlimitedBlaster implements Package {
 		return instance;
 	}
 	
-	@Override
 	public String getPackageName() {
 		return packageName;
 	}
 	
-	@Override
 	public String[] getPackageDetails() {
 		return packageDetails;
 	}
 	
-	@Override
 	public float getPackagePrice() {
 		return packagePrice;
 	}	

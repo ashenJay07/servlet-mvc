@@ -1,6 +1,6 @@
-package com.itpproject.utils.packages;
+package com.epay.utils.packages;
 
-public class FunBlaster implements Package {
+public class FunBlaster {
 	private static FunBlaster instance;
 	
 	private String packageName = "Fun Blaster";
@@ -20,17 +20,14 @@ public class FunBlaster implements Package {
 		return instance;
 	}
 	
-	@Override
 	public String getPackageName() {
 		return packageName;
 	}
 	
-	@Override
 	public String[] getPackageDetails() {
 		return packageDetails;
 	}
 	
-	@Override
 	public float getPackagePrice() {
 		return packagePrice;
 	}

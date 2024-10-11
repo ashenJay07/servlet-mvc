@@ -1,4 +1,4 @@
-package com.itpproject.dao;
+package com.epay.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.itpproject.utils.DatabaseConfig;
-import com.itpproject.model.Package;
+import com.epay.utils.DatabaseConfig;
+import com.epay.model.Package;
 
 public class PackageDAO {
 //	private String SELECT_ALL_PACKAGE_NAMES = "SELECT package_name FROM package";
