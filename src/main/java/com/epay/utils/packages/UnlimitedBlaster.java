@@ -12,7 +12,7 @@ public class UnlimitedBlaster implements IPackage {
 	private float packagePrice = 50.0f;
 	private float weeklyPackagePrice = 250.0f;
 	private float monthlyPackagePrice = 200.0f;
-	private String currentlyActiveDuration;
+	private int currentlyActiveDuration;
 	private boolean isUpgradeRequested;
 	private boolean isDeactivationRequested;
 	
@@ -28,7 +28,7 @@ public class UnlimitedBlaster implements IPackage {
 	public String getPackageName() {
 		return packageName;
 	}
-	
+
 	public String[] getPackageDetails() {
 		return packageDetails;
 	}
@@ -36,8 +36,16 @@ public class UnlimitedBlaster implements IPackage {
 	public float getPackagePrice() {
 		return packagePrice;
 	}
-	
-	public String getCurrentlyActiveDuration() {
+
+	public float getWeeklyPackagePrice() {
+		return weeklyPackagePrice;
+	}
+
+	public float getMonthlyPackagePrice() {
+		return monthlyPackagePrice;
+	}
+
+	public int getCurrentlyActiveDuration() {
 		return currentlyActiveDuration;
 	}
 
@@ -49,6 +57,18 @@ public class UnlimitedBlaster implements IPackage {
 		return isDeactivationRequested;
 	}
 
+	public void setPackageName(String packageName) {
+		this.packageName = packageName;
+	}
+
+	public void setPackageDetails(String[] packageDetails) {
+		this.packageDetails = packageDetails;
+	}
+
+	public void setPackagePrice(float packagePrice) {
+		this.packagePrice = packagePrice;
+	}
+
 	public void setWeeklyPackagePrice(float weeklyPackagePrice) {
 		this.weeklyPackagePrice = weeklyPackagePrice;
 	}
@@ -57,7 +77,7 @@ public class UnlimitedBlaster implements IPackage {
 		this.monthlyPackagePrice = monthlyPackagePrice;
 	}
 
-	public void setCurrentlyActiveDuration(String currentlyActiveDuration) {
+	public void setCurrentlyActiveDuration(int currentlyActiveDuration) {
 		this.currentlyActiveDuration = currentlyActiveDuration;
 	}
 

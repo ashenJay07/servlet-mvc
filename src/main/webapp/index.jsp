@@ -1,47 +1,111 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-    
+pageEncoding="ISO-8859-1"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
+prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="ISO-8859-1" />
-    <title>ePay | packages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/oop-epay-crud/css/common.css" />
+    <!-- <link rel="stylesheet" href="styles/common.css" /> -->
+    <!-- <link rel="stylesheet" href="styles/index.css" /> -->
     <link rel="stylesheet" href="/oop-epay-crud/css/index.css" />
+
+    <title>ePay | packages</title>
   </head>
   <body>
     <div class="package-wrapper">
-      <c:forEach var="cusPackage" items="${pkgInstances}">
-        <div class="package-container">
-          <h2 class="pkg-title">${cusPackage.packageName}</h2>
-          <ul class="pkg-details">
-            <c:forEach var="detail" items="${cusPackage.packageDetails}">
-              <li>${detail}</li>
-            </c:forEach>
-          </ul>
-          <div class="pkg-footer">
-            <span class="pkg-price"
-              >Rs. <fmt:formatNumber
-                value="${cusPackage.packagePrice}"
-                pattern="0.00"
-            /></span>
-            <button type="button" class="btn btn-success btn-lg">
+      <div class="package__container">
+        <c:forEach var="cusPackage" items="${pkgInstances}" varStatus="status">
+          <form class="package" action="#" method="post">
+            <h2 class="package__title">${cusPackage.packageName}</h2>
+
+            <ul>
+              <c:forEach var="detail" items="${cusPackage.packageDetails}">
+                <li>${detail}</li>
+              </c:forEach>
+            </ul>
+
+            <div
+              class="btn-group"
+              role="group"
+              aria-label="Basic radio toggle button group"
+            >
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio1-${status.index}"
+                autocomplete="off"
+                ${cusPackage.currentlyActiveDuration != 30 ? 'checked' : ''} 
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio1-${status.index}"
+              >
+                <span>7 days</span>
+                <span class="price"
+                  >Rs.
+                  <fmt:formatNumber
+                    value="${cusPackage.weeklyPackagePrice}"
+                    pattern="0.00"
+                /></span>
+              </label>
+
+              <input
+                type="radio"
+                class="btn-check"
+                name="btnradio"
+                id="btnradio2-${status.index}"
+                autocomplete="off"
+                ${cusPackage.currentlyActiveDuration == 30 ? 'checked' : ''}
+              />
+              <label
+                class="btn btn-outline-primary"
+                for="btnradio2-${status.index}"
+              >
+                <span>30 days</span>
+                <span class="price"
+                  >Rs.
+                  <fmt:formatNumber
+                    value="${cusPackage.monthlyPackagePrice}"
+                    pattern="0.00"
+                /></span>
+              </label>
+            </div>
+
+            <button type="button" class="btn btn-success btn-activate ${cusPackage.currentlyActiveDuration > 6 ? 'hide' : ''}">
               Activate
             </button>
-          </div>
-        </div>
-      </c:forEach>
+
+            <div class="btn-container ${cusPackage.currentlyActiveDuration < 7 ? 'hide' : ''}">
+              <button type="button" class="btn btn-danger">Deactivate</button>
+              <button
+                type="button"
+                class="btn btn-warning"
+                onclick="window.location.href='/hellooo';"
+              >
+                Upgrade
+              </button>
+            </div>
+          </form>  
+        </c:forEach>
+
+        <!-- <form class="package" action="#" method="post">2</form>
+        <form class="package" action="#" method="post">3</form>
+        <form class="package" action="#" method="post">4</form>
+        <form class="package" action="#" method="post">5</form> -->
+      </div>
     </div>
-    
-    <a href="payment">Go to payment</a>
+
+    <a href="/pages/package.html">Payment Page</a><br />
+    <a href="/pages/transactions.html">transactions Page</a><br />
+    <a href="/pages/activated-packages.html">activated-packages Page</a><br />
   </body>
 </html>
-

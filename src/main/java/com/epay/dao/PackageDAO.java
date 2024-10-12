@@ -9,6 +9,7 @@ import java.util.List;
 import com.epay.utils.DatabaseConfig;
 import com.epay.utils.packages.FunBlaster;
 import com.epay.utils.packages.IPackage;
+import com.epay.utils.packages.UnlimitedBlaster;
 import com.epay.model.Package;
 
 public class PackageDAO {
@@ -70,9 +71,12 @@ public class PackageDAO {
             	
             	instance = getPackageInstance(packageName);
             	
+            	if (instance == null)
+            		continue;
+            	
             	instance.setWeeklyPackagePrice(rs.getFloat("package_price_week"));
             	instance.setMonthlyPackagePrice(rs.getFloat("package_price_month"));
-            	instance.setCurrentlyActiveDuration(rs.getString("duration"));
+            	instance.setCurrentlyActiveDuration(rs.getInt("duration"));
             	instance.setUpgradeRequested(rs.getInt("upgrade_request") == 1);
             	instance.setDeactivationRequested(rs.getInt("deactivation_request") == 1);
             	
@@ -84,7 +88,6 @@ public class PackageDAO {
 		}
 		
 		return activePkgList;
-		
 	}
 	
 	private static IPackage getPackageInstance(String packageType) {
@@ -94,7 +97,7 @@ public class PackageDAO {
 			instance = FunBlaster.getInstance();
 		}
 		else if (packageType.equalsIgnoreCase("Unlimited Blaster")) {
-			instance = FunBlaster.getInstance();
+			instance = UnlimitedBlaster.getInstance();
 		}
 		
 		return instance;

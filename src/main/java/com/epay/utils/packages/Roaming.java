@@ -1,30 +1,30 @@
 package com.epay.utils.packages;
 
-public class FunBlaster implements IPackage {
-	private static FunBlaster instance;
+public class Roaming implements IPackage {
+	private static Roaming instance;
 	
-	private String packageName = "Fun Blaster";
+	private String packageName = "Roaming Package";
 	private String[] packageDetails = {
-			"10 GB of high-speed data for browsing, streaming, and gaming.",
-			"1000 minutes of voice calls to local and international numbers (fair usage applies).",
-			"Unlimited access to social media platforms (Facebook, WhatsApp, Instagram) without consuming data."
+			"5 GB of international data for browsing while abroad, applicable in over 50 countries.",
+			"500 minutes of international voice calls to select countries.",
+			"Free incoming calls while traveling internationally, with no extra charges."
 	};
-	private float packagePrice = 45.0f;
+	private float packagePrice = 50.0f;
 	private float weeklyPackagePrice = 250.0f;
 	private float monthlyPackagePrice = 200.0f;
 	private int currentlyActiveDuration;
 	private boolean isUpgradeRequested;
 	private boolean isDeactivationRequested;
 	
-	private FunBlaster() {};
+	private Roaming() {}
 	
-	public static FunBlaster getInstance() {
+	public static Roaming getInstance() {
 		if (instance == null)
-			instance = new FunBlaster();
+			instance = new Roaming();
 			
 		return instance;
 	}
-
+	
 	public String getPackageName() {
 		return packageName;
 	}
@@ -87,5 +87,5 @@ public class FunBlaster implements IPackage {
 
 	public void setDeactivationRequested(boolean isDeactivationRequested) {
 		this.isDeactivationRequested = isDeactivationRequested;
-	}	
+	}
 }

@@ -15,6 +15,7 @@ import com.epay.dao.PackageDAO;
 //import com.epay.dao.PackageDAO;
 import com.epay.utils.packages.FunBlaster;
 import com.epay.utils.packages.IPackage;
+import com.epay.utils.packages.Roaming;
 import com.epay.utils.packages.UnlimitedBlaster;
 
 
@@ -41,7 +42,7 @@ public class PackageServlet extends HttpServlet {
 		pkgInstances.add(UnlimitedBlaster.getInstance());
 		pkgInstances.add(FunBlaster.getInstance());
 		pkgInstances.add(UnlimitedBlaster.getInstance());
-		pkgInstances.add(FunBlaster.getInstance());
+		pkgInstances.add(Roaming.getInstance());
 		
 		activePkgInstances = PackageDAO.getActivePackagesByUser();
 		
