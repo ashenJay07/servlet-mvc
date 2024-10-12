@@ -14,7 +14,7 @@
     </welcome-file-list>
 
     <servlet>
-    	<display-name>PackageServlet</display-name>
+        <display-name>PackageServlet</display-name>
         <servlet-name>PackageServlet</servlet-name>
         <servlet-class>com.epay.controller.PackageServlet</servlet-class>
     </servlet>
@@ -22,7 +22,7 @@
         <servlet-name>PackageServlet</servlet-name>
         <url-pattern>/packages</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>com.epay.controller.PaymentServlet</servlet-class>
@@ -31,14 +31,41 @@
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/submit-payment</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
-    <servlet-name>PaymentPage</servlet-name>
-    <jsp-file>/pages/payment.jsp</jsp-file>
+        <servlet-name>Transaction</servlet-name>
+        <servlet-class>com.epay.controller.TransactionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-    <servlet-name>PaymentPage</servlet-name>
-    <url-pattern>/payment</url-pattern>
-</servlet-mapping>
+        <servlet-name>Transaction</servlet-name>
+        <url-pattern>/admin/transactions</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ActivatedPackages</servlet-name>
+        <servlet-class>com.epay.controller.TransactionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ActivatedPackages</servlet-name>
+        <url-pattern>/admin/activated-packages</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PaymentPage</servlet-name>
+        <jsp-file>/pages/payment.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentPage</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
+
+    <!-- <servlet>
+        <servlet-name>TransactionPage</servlet-name>
+        <jsp-file>/pages/admin/transactions.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TransactionPage</servlet-name>
+        <url-pattern>/admin/transactions</url-pattern>
+    </servlet-mapping> -->
 
 </web-app>

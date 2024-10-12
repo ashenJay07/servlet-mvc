@@ -1,15 +1,40 @@
 package com.epay.model;
 
 public class PaymentInfo {
+	private int id;
 	private float transAmount;
 	private String cardHolder;
 	private String email;
 	private String cardNumber;
 	private int cardExpMonth;
 	private int cardExpYear;
+	private String transactionDate;
 	private String cvv;
-	
+	private String userId;
+	private int packageId;
+	private int packageDuration;
+
 	public PaymentInfo() {}
+
+	public PaymentInfo(int id, String userId, int packageId, int packageDuration) {
+		this.id = id;
+		this.userId = userId;
+		this.packageId = packageId;
+		this.packageDuration = packageDuration;
+	}
+
+	public PaymentInfo(int id, float transAmount, String cardHolder, String email, String transactionDate, String userId) {
+		this.id = id;
+		this.transAmount = transAmount;
+		this.cardHolder = cardHolder;
+		this.email = email;
+		this.transactionDate = transactionDate;
+		this.userId = userId;
+	}
+
+	public int getId() {
+		return id;
+	}
 
 	public float getTransAmount() {
 		return transAmount;
@@ -35,8 +60,28 @@ public class PaymentInfo {
 		return cardExpYear;
 	}
 
+	public String getTransactionDate() {
+		return transactionDate;
+	}
+
 	public String getCvv() {
 		return cvv;
+	}
+	
+	public String getUserId() {
+		return userId;
+	}
+	
+	public int getPackageId() {
+		return packageId;
+	}
+	
+	public int getPackageDuration() {
+		return packageDuration;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setTransAmount(float transAmount) {
@@ -63,9 +108,23 @@ public class PaymentInfo {
 		this.cardExpYear = cardExpYear;
 	}
 
+	public void setTransactionDate(String transactionDate) {
+		this.transactionDate = transactionDate;
+	}
+
 	public void setCvv(String cvv) {
 		this.cvv = cvv;
-	};
+	}
 	
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	
+	public void setPackageId(int packageId) {
+		this.packageId = packageId;
+	}
+	
+	public void setPackageDuration(int packageDuration) {
+		this.packageDuration = packageDuration;
+	}
 }
