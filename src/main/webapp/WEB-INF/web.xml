@@ -34,7 +34,7 @@
 
     <servlet>
         <servlet-name>Transaction</servlet-name>
-        <servlet-class>com.epay.controller.TransactionServlet</servlet-class>
+        <servlet-class>com.epay.controller.AdminServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Transaction</servlet-name>
@@ -43,7 +43,7 @@
 
     <servlet>
         <servlet-name>ActivatedPackages</servlet-name>
-        <servlet-class>com.epay.controller.TransactionServlet</servlet-class>
+        <servlet-class>com.epay.controller.AdminServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ActivatedPackages</servlet-name>
