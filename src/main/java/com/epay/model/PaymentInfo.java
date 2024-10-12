@@ -2,6 +2,7 @@ package com.epay.model;
 
 public class PaymentInfo {
 	private int id;
+	private String packageName;
 	private float transAmount;
 	private String cardHolder;
 	private String email;
@@ -36,6 +37,10 @@ public class PaymentInfo {
 		return id;
 	}
 
+	public String getPackageName() {
+		return packageName;
+	}
+
 	public float getTransAmount() {
 		return transAmount;
 	}
@@ -67,21 +72,25 @@ public class PaymentInfo {
 	public String getCvv() {
 		return cvv;
 	}
-	
+
 	public String getUserId() {
 		return userId;
 	}
-	
+
 	public int getPackageId() {
 		return packageId;
 	}
-	
+
 	public int getPackageDuration() {
 		return packageDuration;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public void setPackageName(String packageName) {
+		this.packageName = packageName;
 	}
 
 	public void setTransAmount(float transAmount) {
@@ -115,16 +124,18 @@ public class PaymentInfo {
 	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
-	
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	
+
 	public void setPackageId(int packageId) {
 		this.packageId = packageId;
 	}
-	
+
 	public void setPackageDuration(int packageDuration) {
 		this.packageDuration = packageDuration;
 	}
+
+	
 }

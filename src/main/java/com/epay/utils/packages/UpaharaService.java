@@ -1,26 +1,26 @@
 package com.epay.utils.packages;
 
-public class Roaming implements IPackage {
-	private static Roaming instance;
+public class UpaharaService implements IPackage {
+	private static UpaharaService instance;
 	
-	private String packageName = "Roaming";
+	private String packageName = "Upahara Service";
 	private String[] packageDetails = {
-			"5 GB of international data for browsing while abroad, applicable in over 50 countries.",
-			"500 minutes of international voice calls to select countries.",
-			"Free incoming calls while traveling internationally, with no extra charges."
+			"15 GB of data for general use, suitable for web browsing and light streaming.",
+			"Unlimited free calls to two pre-registered numbers of your choice (friends or family).",
+			"500 minutes of local calls to other networks, with a competitive call rate for additional minutes."
 	};
 	private float packagePrice = 50.0f;
-	private float weeklyPackagePrice = 250.0f;
-	private float monthlyPackagePrice = 180.0f;
+	private float weeklyPackagePrice = 550.0f;
+	private float monthlyPackagePrice = 450.0f;
 	private int currentlyActiveDuration;
 	private boolean isUpgradeRequested;
 	private boolean isDeactivationRequested;
 	
-	private Roaming() {}
+	private UpaharaService() {}
 	
-	public static Roaming getInstance() {
+	public static UpaharaService getInstance() {
 		if (instance == null)
-			instance = new Roaming();
+			instance = new UpaharaService();
 			
 		return instance;
 	}

@@ -49,6 +49,15 @@
         <servlet-name>ActivatedPackages</servlet-name>
         <url-pattern>/admin/activated-packages</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Checkout</servlet-name>
+        <servlet-class>com.epay.controller.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Checkout</servlet-name>
+        <url-pattern>/checkout</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>PaymentPage</servlet-name>
@@ -58,6 +67,7 @@
         <servlet-name>PaymentPage</servlet-name>
         <url-pattern>/payment</url-pattern>
     </servlet-mapping>
+    
 
     <!-- <servlet>
         <servlet-name>TransactionPage</servlet-name>

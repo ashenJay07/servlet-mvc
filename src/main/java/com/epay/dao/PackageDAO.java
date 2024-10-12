@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.epay.utils.DatabaseConfig;
+import com.epay.utils.packages.EDoc;
 import com.epay.utils.packages.FunBlaster;
 import com.epay.utils.packages.IPackage;
+import com.epay.utils.packages.Roaming;
 import com.epay.utils.packages.UnlimitedBlaster;
+import com.epay.utils.packages.UpaharaService;
 import com.epay.model.Package;
 
 public class PackageDAO {
@@ -98,6 +101,15 @@ public class PackageDAO {
 		}
 		else if (packageType.equalsIgnoreCase("Unlimited Blaster")) {
 			instance = UnlimitedBlaster.getInstance();
+		}
+		else if (packageType.equalsIgnoreCase("Roaming")) {
+			instance = Roaming.getInstance();
+		}
+		else if (packageType.equalsIgnoreCase("E-Doc Service")) {
+			instance = EDoc.getInstance();
+		}
+		else if (packageType.equalsIgnoreCase("Upahara Service")) {
+			instance = UpaharaService.getInstance();
 		}
 		
 		return instance;

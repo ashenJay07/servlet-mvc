@@ -40,7 +40,8 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
               <input
                 type="radio"
                 class="btn-check"
-                name="btnradio"
+                name="duration"
+                value="7"
                 id="btnradio1-${status.index}"
                 autocomplete="off"
                 checked
@@ -61,7 +62,8 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
               <input
                 type="radio"
                 class="btn-check"
-                name="btnradio"
+                name="duration"
+                value="30"
                 id="btnradio2-${status.index}"
                 autocomplete="off"
                 ${cusPackage.currentlyActiveDuration == 30 ? 'checked' : ''}
@@ -79,18 +81,22 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 /></span>
               </label>
             </div>
+            
+            <input type="hidden" name="package-name" value="${cusPackage.packageName}" />
+            <input type="hidden" name="weekly-package-price" value="${cusPackage.weeklyPackagePrice}" />
+            <input type="hidden" name="monthly-package-price" value="${cusPackage.monthlyPackagePrice}" />
 
-            <button type="button" class="btn btn-success btn-activate ${cusPackage.currentlyActiveDuration > 6 ? 'hide' : ''}">
+            <button type="submit" class="btn btn-success btn-activate ${cusPackage.currentlyActiveDuration > 6 ? 'hide' : ''}" formaction="checkout">
               Activate
             </button>
 
             <div class="btn-container ${cusPackage.currentlyActiveDuration < 7 ? 'hide' : ''}">
-              <button type="button" class="btn btn-danger">Deactivate</button>
+              <button type="submit" class="btn btn-danger" formaction="deactivate-package">Deactivate</button>
               <button
-                type="button"
+                type="submit"
                 class="btn btn-warning"
-                onclick="window.location.href='/hellooo';"
                 ${cusPackage.currentlyActiveDuration == 30 ? 'disabled' : ''}
+                formaction="upgrade-package"
               >
                 Upgrade
               </button>

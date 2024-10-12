@@ -13,7 +13,7 @@ public class DatabaseConfig {
 	private String password;
 	
 	private DatabaseConfig() {
-		url = "jdbc:mysql://localhost:3306/itp_servlet";
+		url = "jdbc:mysql://localhost:3306/oop_mvc_project";
 		username = "root";
 		password = "root";
 	}

@@ -1,26 +1,26 @@
 package com.epay.utils.packages;
 
-public class Roaming implements IPackage {
-	private static Roaming instance;
+public class EDoc implements IPackage {
+	private static EDoc instance;
 	
-	private String packageName = "Roaming";
+	private String packageName = "E-Doc Service";
 	private String[] packageDetails = {
-			"5 GB of international data for browsing while abroad, applicable in over 50 countries.",
-			"500 minutes of international voice calls to select countries.",
-			"Free incoming calls while traveling internationally, with no extra charges."
+			"20 GB of high-speed data dedicated to educational platforms (Google Scholar, JSTOR, Coursera).",
+			"Free access to document-sharing services like Google Drive, Dropbox, and OneDrive without data usage.",
+			"Special browsing rates for online educational content and virtual classrooms."
 	};
 	private float packagePrice = 50.0f;
-	private float weeklyPackagePrice = 250.0f;
-	private float monthlyPackagePrice = 180.0f;
+	private float weeklyPackagePrice = 750.0f;
+	private float monthlyPackagePrice = 630.0f;
 	private int currentlyActiveDuration;
 	private boolean isUpgradeRequested;
 	private boolean isDeactivationRequested;
 	
-	private Roaming() {}
+	private EDoc() {}
 	
-	public static Roaming getInstance() {
+	public static EDoc getInstance() {
 		if (instance == null)
-			instance = new Roaming();
+			instance = new EDoc();
 			
 		return instance;
 	}

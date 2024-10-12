@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,11 +14,26 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-   <link rel="stylesheet" href="/oop-epay-crud/css/payment.css" />
+    <link rel="stylesheet" href="/oop-epay-crud/css/payment.css" />
+    <!-- <link rel="stylesheet" href="/styles/payment.css" /> -->
     <title>ePay | Payment</title>
   </head>
   <body>
     <div class="form-wrapper">
+      <!-- <div class="form-header">
+        <h1>Package 01</h1>
+        <span class="package-price">350.00</span>
+        <span>7 Day Plan</span>
+      </div> -->
+
+      <div class="form-header">
+        <h1>${packageName}</h1>
+        <span class="package-price"
+          ><fmt:formatNumber value="${packagePrice}" pattern="0.00"
+        /></span>
+        <span>${packageDuration} Day Plan</span>
+      </div>
+
       <form
         action="/oop-epay-crud/submit-payment"
         method="post"
@@ -89,6 +106,10 @@
             />
           </div>
         </div>
+        
+        <input type="hidden" name="package-name" value="${packageName}" />
+        <input type="hidden" name="transaction-amount" value="${packagePrice}" />
+        <input type="hidden" name="package-duration" value="${packageDuration}" />
 
         <div class="form-text my-4">
           We'll never share your payment information with anyone else.

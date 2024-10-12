@@ -12,11 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epay.dao.PackageDAO;
+import com.epay.utils.packages.EDoc;
 //import com.epay.dao.PackageDAO;
 import com.epay.utils.packages.FunBlaster;
 import com.epay.utils.packages.IPackage;
 import com.epay.utils.packages.Roaming;
 import com.epay.utils.packages.UnlimitedBlaster;
+import com.epay.utils.packages.UpaharaService;
 
 
 // @WebServlet("/packages")
@@ -41,8 +43,9 @@ public class PackageServlet extends HttpServlet {
 		
 		pkgInstances.add(UnlimitedBlaster.getInstance());
 		pkgInstances.add(FunBlaster.getInstance());
-		pkgInstances.add(UnlimitedBlaster.getInstance());
 		pkgInstances.add(Roaming.getInstance());
+		pkgInstances.add(EDoc.getInstance());
+		pkgInstances.add(UpaharaService.getInstance());
 		
 		activePkgInstances = PackageDAO.getActivePackagesByUser();
 		
