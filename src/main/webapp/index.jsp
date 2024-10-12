@@ -43,7 +43,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 name="btnradio"
                 id="btnradio1-${status.index}"
                 autocomplete="off"
-                ${cusPackage.currentlyActiveDuration != 30 ? 'checked' : ''} 
+                checked
               />
               <label
                 class="btn btn-outline-primary"
@@ -90,6 +90,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 type="button"
                 class="btn btn-warning"
                 onclick="window.location.href='/hellooo';"
+                ${cusPackage.currentlyActiveDuration == 30 ? 'disabled' : ''}
               >
                 Upgrade
               </button>
