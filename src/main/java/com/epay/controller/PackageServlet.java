@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.epay.dao.PackageDAO;
 //import com.epay.dao.PackageDAO;
 import com.epay.utils.packages.FunBlaster;
+import com.epay.utils.packages.IPackage;
 import com.epay.utils.packages.UnlimitedBlaster;
 
 
@@ -31,7 +33,8 @@ public class PackageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		List<Package> pkgNames = packageDAO.getAllProducts();
-		List<Object> pkgInstances = new ArrayList<>();
+		List<IPackage> pkgInstances = new ArrayList<>();
+		List<IPackage> activePkgInstances = null;
 
 //		System.out.println(UnlimitedBlaster.getInstance().getPackageName());
 		
@@ -39,6 +42,16 @@ public class PackageServlet extends HttpServlet {
 		pkgInstances.add(FunBlaster.getInstance());
 		pkgInstances.add(UnlimitedBlaster.getInstance());
 		pkgInstances.add(FunBlaster.getInstance());
+		
+		activePkgInstances = PackageDAO.getActivePackagesByUser();
+		
+		for (int i =0; i < pkgInstances.size(); i++) {
+			for(IPackage activePkg : activePkgInstances) {
+				if(pkgInstances.get(i).getPackageName().equalsIgnoreCase(activePkg.getPackageName())) {
+					pkgInstances.set(i, activePkg);
+				}
+			}
+		}
 		
         request.setAttribute("pkgInstances", pkgInstances);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");

@@ -1,6 +1,6 @@
 package com.epay.utils.packages;
 
-public class FunBlaster {
+public class FunBlaster implements IPackage {
 	private static FunBlaster instance;
 	
 	private String packageName = "Fun Blaster";
@@ -10,6 +10,11 @@ public class FunBlaster {
 			"Unlimited access to social media platforms (Facebook, WhatsApp, Instagram) without consuming data."
 	};
 	private float packagePrice = 45.0f;
+	private float weeklyPackagePrice = 250.0f;
+	private float monthlyPackagePrice = 200.0f;
+	private String currentlyActiveDuration;
+	private boolean isUpgradeRequested;
+	private boolean isDeactivationRequested;
 	
 	private FunBlaster() {};
 	
@@ -31,4 +36,38 @@ public class FunBlaster {
 	public float getPackagePrice() {
 		return packagePrice;
 	}
+
+	public String getCurrentlyActiveDuration() {
+		return currentlyActiveDuration;
+	}
+
+	public boolean isUpgradeRequested() {
+		return isUpgradeRequested;
+	}
+
+	public boolean isDeactivationRequested() {
+		return isDeactivationRequested;
+	}
+
+	public void setWeeklyPackagePrice(float weeklyPackagePrice) {
+		this.weeklyPackagePrice = weeklyPackagePrice;
+	}
+
+	public void setMonthlyPackagePrice(float monthlyPackagePrice) {
+		this.monthlyPackagePrice = monthlyPackagePrice;
+	}
+
+	public void setCurrentlyActiveDuration(String currentlyActiveDuration) {
+		this.currentlyActiveDuration = currentlyActiveDuration;
+	}
+
+	public void setUpgradeRequested(boolean isUpgradeRequested) {
+		this.isUpgradeRequested = isUpgradeRequested;
+	}
+
+	public void setDeactivationRequested(boolean isDeactivationRequested) {
+		this.isDeactivationRequested = isDeactivationRequested;
+	}
+	
+	
 }
