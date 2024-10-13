@@ -27,6 +27,17 @@ public class AdminServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/active-packages.jsp");
 	        dispatcher.forward(request, response);
 		}
+		if (request.getServletPath() == "/admin/request/upgrade-requests") {
+			System.out.println("Hi 1");
+//			request.setAttribute("activePackages", AdminDAO.getAllActivePackages());
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/upgrade-requests.jsp");
+	        dispatcher.forward(request, response);
+		}
+		if (request.getServletPath() == "/admin/request/deactivation-requests") {
+//			request.setAttribute("activePackages", AdminDAO.getAllActivePackages());
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/deactivation-requests.jsp");
+	        dispatcher.forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
