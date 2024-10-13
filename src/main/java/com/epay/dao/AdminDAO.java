@@ -27,7 +27,8 @@ public class AdminDAO {
 	private static String GET_DEACTIVATION_REQUESTED_PACKAGES = "SELECT ap.package_id, package_name, duration, activated_date, "
 			+ "expire_date, user_id FROM activated_packages ap LEFT JOIN package p ON p.id = ap.package_id WHERE deactivation_request = 1;";
 	private static String DEACTIVATE_PACKAGE_BY_ID = "DELETE FROM activated_packages WHERE package_id = ? AND user_id = ?;";
-	private static String UPGRADE_PACKAGE_BY_ID = "UPDATE activated_packages SET duration = 30, activated_date = ?, expire_date = ?, upgrade_request = null WHERE package_id = ? AND user_id = ?;";
+	private static String UPGRADE_PACKAGE_BY_ID = "UPDATE activated_packages SET duration = 30, activated_date = ?, expire_date = ?, "
+			+ "upgrade_request = null WHERE package_id = ? AND user_id = ? AND upgrade_request = 1;";
 	
 	
 	public static List<PaymentInfo> getAllTransactions() {

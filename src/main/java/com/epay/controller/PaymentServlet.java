@@ -71,9 +71,7 @@ public class PaymentServlet extends HttpServlet {
 			}
 			
 			PaymentDAO.makePayment(paymentInstance, Boolean.parseBoolean(request.getParameter("pending")));
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-	        dispatcher.forward(request, response);
+			response.sendRedirect("packages");
 		}
 	}
 }

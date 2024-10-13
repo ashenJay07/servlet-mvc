@@ -123,5 +123,25 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
         </c:forEach>
       </div>
     </div>
+    
+ 	<div class="alert-box-wrapper hide">
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those
+        fields below.
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    
   </body>
 </html>

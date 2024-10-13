@@ -54,6 +54,7 @@ public class AdminServlet extends HttpServlet {
 			String userId = request.getParameter("userId");
 			
 			AdminDAO.upgradePackage(packageId, packageName, userId);
+			response.sendRedirect("upgrade-requests");
 		}
 	}
 

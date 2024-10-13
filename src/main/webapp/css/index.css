@@ -97,3 +97,26 @@ label.btn .price {
 .hide {
   display: none;
 }
+
+/* ----------- */
+
+.alert-box-wrapper {
+  z-index: 999;
+  position: fixed;
+  bottom: 3vh;
+  right: 3vw;
+  width: calc(100vw - 50px);
+}
+
+@media screen and (min-width: 768px) {
+  .alert-box-wrapper {
+    width: 410px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .alert-box-wrapper {
+    right: 30px;
+    width: 500px;
+  }
+}
