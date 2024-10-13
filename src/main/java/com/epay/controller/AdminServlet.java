@@ -22,18 +22,29 @@ public class AdminServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/transactions.jsp");
 	        dispatcher.forward(request, response);
 		}
-		if (request.getServletPath() == "/admin/activated-packages") {
+		else if (request.getServletPath() == "/admin/activated-packages") {
 			request.setAttribute("activePackages", AdminDAO.getAllActivePackages());
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/active-packages.jsp");
 	        dispatcher.forward(request, response);
 		}
-		if (request.getServletPath() == "/admin/request/upgrade-requests") {
+		else if (request.getServletPath() == "/admin/request/upgrade-requests") {
 			request.setAttribute("upgradeRequests", AdminDAO.getRequestedPackages("upgrade"));
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/upgrade-requests.jsp");
 	        dispatcher.forward(request, response);
 		}
-		if (request.getServletPath() == "/admin/request/deactivation-requests") {
+		else if (request.getServletPath() == "/admin/request/deactivation-requests") {
 			request.setAttribute("deactivationRequests", AdminDAO.getRequestedPackages("deactivate"));
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/deactivation-requests.jsp");
+	        dispatcher.forward(request, response);
+		}
+		else if (request.getServletPath() == "/admin/request/deactivate") {
+			int packageId = Integer.parseInt(request.getParameter("packageId"));
+			String packageName = request.getParameter("packageName");
+			String userId = request.getParameter("userId");
+			
+			System.out.println(packageId + " " + userId);
+			
+			AdminDAO.deactivatePackage(packageId, packageName, userId);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/deactivation-requests.jsp");
 	        dispatcher.forward(request, response);
 		}

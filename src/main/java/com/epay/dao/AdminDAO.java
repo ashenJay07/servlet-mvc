@@ -10,14 +10,21 @@ import java.util.List;
 import com.epay.model.Package;
 import com.epay.model.PaymentInfo;
 import com.epay.utils.DatabaseConfig;
+import com.epay.utils.packages.EDoc;
+import com.epay.utils.packages.FunBlaster;
+import com.epay.utils.packages.IPackage;
+import com.epay.utils.packages.Roaming;
+import com.epay.utils.packages.UnlimitedBlaster;
+import com.epay.utils.packages.UpaharaService;
 
 public class AdminDAO {
 	private static String GET_ALL_TRANSACTIONS = "SELECT * FROM transaction_info";
-	private static String GET_ALL_ACTIVE_PACKAGES = "SELECT * FROM activated_packages";
+	private static String GET_ALL_ACTIVE_PACKAGES = "SELECT * FROM activated_packages;";
 	private static String GET_UPGRADE_REQUESTED_PACKAGES = "SELECT ap.package_id, package_name, duration, activated_date, expire_date, "
 			+ "user_id FROM activated_packages ap LEFT JOIN package p ON p.id = ap.package_id WHERE upgrade_request = 1;";
 	private static String GET_DEACTIVATION_REQUESTED_PACKAGES = "SELECT ap.package_id, package_name, duration, activated_date, "
 			+ "expire_date, user_id FROM activated_packages ap LEFT JOIN package p ON p.id = ap.package_id WHERE deactivation_request = 1;";
+	private static String DEACTIVATE_PACKAGE_BY_ID = "DELETE FROM activated_packages WHERE package_id = ? AND user_id = ?;";
 	
 	
 	public static List<PaymentInfo> getAllTransactions() {
@@ -105,8 +112,6 @@ public class AdminDAO {
 		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
 		List<PaymentInfo> packages = new ArrayList<>();
 		
-		
-		
 		try(Connection connection = dbInstance.getConnection()) {
 			
 			PreparedStatement preparedStatement = null;
@@ -133,5 +138,51 @@ public class AdminDAO {
 		}
 		
 		return packages;
+	}
+	
+	
+	public static int deactivatePackage(int pkgId, String packageName, String userId) {
+		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
+		List<PaymentInfo> packages = new ArrayList<>();
+		
+		try(Connection connection = dbInstance.getConnection()) {
+			
+			PreparedStatement stmt = connection.prepareStatement(DEACTIVATE_PACKAGE_BY_ID);
+			stmt.setInt(1, pkgId);
+			stmt.setString(2, userId);
+			
+			// Execute the query
+			int rowsDeleted = stmt.executeUpdate();
+			
+			if (rowsDeleted > 0)
+				getPackageInstance(packageName).setCurrentlyActiveDuration(0);
+				return 1;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	private static IPackage getPackageInstance(String packageType) {
+		IPackage instance = null;
+		
+		if (packageType.equalsIgnoreCase("Fun Blaster")) {
+			instance = FunBlaster.getInstance();
+		}
+		else if (packageType.equalsIgnoreCase("Unlimited Blaster")) {
+			instance = UnlimitedBlaster.getInstance();
+		}
+		else if (packageType.equalsIgnoreCase("Roaming")) {
+			instance = Roaming.getInstance();
+		}
+		else if (packageType.equalsIgnoreCase("E-Doc Service")) {
+			instance = EDoc.getInstance();
+		}
+		else if (packageType.equalsIgnoreCase("Upahara Service")) {
+			instance = UpaharaService.getInstance();
+		}
+		
+		return instance;
 	}
 }

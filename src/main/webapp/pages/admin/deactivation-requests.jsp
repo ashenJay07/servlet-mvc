@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
+pageEncoding="ISO-8859-1"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
 prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
@@ -44,10 +44,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
           >
             Upgrade Requests
           </button>
-          <button
-            type="button"
-            class="btn btn-outline-secondary"
-          >
+          <button type="button" class="btn btn-outline-secondary">
             Deactivation Requests
           </button>
         </div>
@@ -66,19 +63,23 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
             </thead>
             <tbody>
               <c:forEach var="request" items="${deactivationRequests}">
-	              <tr>
-	                <th scope="row">${request.packageId}</th>
-	                <td>${request.packageName}</td>
-	                <td>${request.packageDuration}</td>
-	                <td>${request.activatedDate}</td>
-	                <td>${request.expireDate}</td>
-	                <td>${request.userId}</td>
-	                <td>
-	                  <button type="button" class="btn btn-danger">
-	                    Deactivate
-	                  </button>
-	                </td>
-	              </tr>
+                <tr>
+                  <th scope="row">${request.packageId}</th>
+                  <td>${request.packageName}</td>
+                  <td>${request.packageDuration}</td>
+                  <td>${request.activatedDate}</td>
+                  <td>${request.expireDate}</td>
+                  <td>${request.userId}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-danger"
+                      onclick="window.location.href='deactivate?packageId=${request.packageId}&packageName=${request.packageName}&userId=${request.userId}';"
+                    >
+                      Deactivate
+                    </button>
+                  </td>
+                </tr>
               </c:forEach>
             </tbody>
           </table>

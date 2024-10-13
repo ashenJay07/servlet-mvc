@@ -64,9 +64,9 @@ a:hover {
   transition: background-color 300ms;
 }
 
-.table-wrapper {
+/* .table-wrapper {
   background-color: rgb(253, 243, 231);
-}
+} */
 
 .table-wrapper th,
 .table-wrapper td {

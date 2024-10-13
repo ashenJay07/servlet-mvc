@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
+pageEncoding="ISO-8859-1"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
 prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
@@ -37,10 +37,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
       <div class="dashboard__body">
         <div class="dashboard__req-btn-wrapper">
-          <button
-            type="button"
-            class="btn btn-outline-secondary"
-          >
+          <button type="button" class="btn btn-outline-secondary">
             Upgrade Requests
           </button>
           <button
@@ -66,17 +63,23 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
             </thead>
             <tbody>
               <c:forEach var="request" items="${upgradeRequests}">
-	              <tr>
-	                <th scope="row">${request.packageId}</th>
-	                <td>${request.packageName}</td>
-	                <td>${request.packageDuration}</td>
-	                <td>${request.activatedDate}</td>
-	                <td>${request.expireDate}</td>
-	                <td>${request.userId}</td>
-	                <td>
-	                  <button type="button" class="btn btn-warning">Upgrade</button>
-	                </td>
-	              </tr>
+                <tr>
+                  <th scope="row">${request.packageId}</th>
+                  <td>${request.packageName}</td>
+                  <td>${request.packageDuration}</td>
+                  <td>${request.activatedDate}</td>
+                  <td>${request.expireDate}</td>
+                  <td>${request.userId}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-warning"
+                      onclick="window.location.href='deactivate';"
+                    >
+                      Upgrade
+                    </button>
+                  </td>
+                </tr>
               </c:forEach>
             </tbody>
           </table>

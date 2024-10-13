@@ -40,6 +40,24 @@
         <servlet-name>Checkout</servlet-name>
         <url-pattern>/checkout</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UpdateRequest</servlet-name>
+        <servlet-class>com.epay.controller.UserRequestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateRequest</servlet-name>
+        <url-pattern>/upgrade-package</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeleteRequest</servlet-name>
+        <servlet-class>com.epay.controller.UserRequestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteRequest</servlet-name>
+        <url-pattern>/deactivate-package</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>Transaction</servlet-name>
@@ -75,6 +93,15 @@
     <servlet-mapping>
         <servlet-name>Deactivate</servlet-name>
         <url-pattern>/admin/request/deactivation-requests</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DeactivateById</servlet-name>
+        <servlet-class>com.epay.controller.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeactivateById</servlet-name>
+        <url-pattern>/admin/request/deactivate</url-pattern>
     </servlet-mapping>
 
     <servlet>

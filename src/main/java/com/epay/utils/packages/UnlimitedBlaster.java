@@ -21,7 +21,7 @@ public class UnlimitedBlaster implements IPackage {
 	public static UnlimitedBlaster getInstance() {
 		if (instance == null)
 			instance = new UnlimitedBlaster();
-			
+		
 		return instance;
 	}
 	

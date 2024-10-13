@@ -59,15 +59,9 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 /></span>
               </label>
 
-              <input
-                type="radio"
-                class="btn-check"
-                name="duration"
-                value="30"
-                id="btnradio2-${status.index}"
-                autocomplete="off"
-                ${cusPackage.currentlyActiveDuration == 30 ? 'checked' : ''}
-              />
+              <input type="radio" class="btn-check" name="duration" value="30"
+              id="btnradio2-${status.index}" autocomplete="off"
+              ${cusPackage.currentlyActiveDuration == 30 ? 'checked' : ''} />
               <label
                 class="btn btn-outline-primary"
                 for="btnradio2-${status.index}"
@@ -81,27 +75,51 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 /></span>
               </label>
             </div>
-            
-            <input type="hidden" name="package-name" value="${cusPackage.packageName}" />
-            <input type="hidden" name="weekly-package-price" value="${cusPackage.weeklyPackagePrice}" />
-            <input type="hidden" name="monthly-package-price" value="${cusPackage.monthlyPackagePrice}" />
 
-            <button type="submit" class="btn btn-success btn-activate ${cusPackage.currentlyActiveDuration > 6 ? 'hide' : ''}" formaction="checkout">
+            <input
+              type="hidden"
+              name="package-name"
+              value="${cusPackage.packageName}"
+            />
+            <input
+              type="hidden"
+              name="weekly-package-price"
+              value="${cusPackage.weeklyPackagePrice}"
+            />
+            <input
+              type="hidden"
+              name="monthly-package-price"
+              value="${cusPackage.monthlyPackagePrice}"
+            />
+
+            <button
+              type="submit"
+              class="btn btn-success btn-activate ${cusPackage.currentlyActiveDuration > 6 ? 'hide' : ''}"
+              formaction="checkout"
+            >
               Activate
             </button>
 
-            <div class="btn-container ${cusPackage.currentlyActiveDuration < 7 ? 'hide' : ''}">
-              <button type="submit" class="btn btn-danger" formaction="deactivate-package">Deactivate</button>
+            <div
+              class="btn-container ${cusPackage.currentlyActiveDuration < 7 ? 'hide' : ''}"
+            >
+              <button
+                type="submit"
+                class="btn btn-danger"
+                formaction="deactivate-package"
+              >
+                Deactivate
+              </button>
               <button
                 type="submit"
                 class="btn btn-warning"
-                ${cusPackage.currentlyActiveDuration == 30 ? 'disabled' : ''}
                 formaction="upgrade-package"
+                ${cusPackage.currentlyActiveDuration == 30 ? 'disabled' : ''}
               >
                 Upgrade
               </button>
             </div>
-          </form>  
+          </form>
         </c:forEach>
 
         <!-- <form class="package" action="#" method="post">2</form>
