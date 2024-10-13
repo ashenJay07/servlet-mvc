@@ -1,6 +1,8 @@
 package com.epay.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +28,7 @@ public class UserRequestServlet extends HttpServlet {
 		}
 		else if (request.getServletPath() == "/deactivate-package") {
 			UserRequestDAO.makeDeactivationRequest(packageName, userId);
+			response.sendRedirect("packages");
 		}
 	}
 }

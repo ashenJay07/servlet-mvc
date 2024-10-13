@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 //import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,19 +21,9 @@ import com.epay.utils.packages.Roaming;
 import com.epay.utils.packages.UnlimitedBlaster;
 import com.epay.utils.packages.UpaharaService;
 
-
 // @WebServlet("/packages")
 public class PackageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-//	private PackageDAO packageDAO;
-
-    public PackageServlet() {
-        super();
-    }
-    
-//    public void init() {
-//		packageDAO = new PackageDAO();
-//    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		List<Package> pkgNames = packageDAO.getAllProducts();

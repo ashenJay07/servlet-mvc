@@ -1,0 +1,36 @@
+@charset "ISO-8859-1";
+
+.body-wrapper {
+  /* background-color: rgb(150, 226, 226); */
+  padding: 120px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.admin-login-form .page-title {
+  color: rgb(9, 177, 79);
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.admin-login-form button.submit {
+  width: 100%;
+  margin-top: 30px;
+}
+
+@media screen and (min-width: 750px) {
+  .body-wrapper {
+    width: 60vw;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .body-wrapper {
+    width: 40vw;
+    margin: auto;
+  }
+}

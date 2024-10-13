@@ -19,9 +19,12 @@ import com.epay.model.Package;
 public class PackageDAO {
 //	private String SELECT_ALL_PACKAGE_NAMES = "SELECT package_name FROM package";
 	private static String SELECT_ALL_PACKAGE = "SELECT * FROM package";
-	private static String SELECT_PACKAGE_INFO_BY_USER = "SELECT * FROM activated_packages ap LEFT JOIN package p "
-			+ "ON p.id = ap.package_id WHERE user_id = ? UNION SELECT * FROM activated_packages ap RIGHT JOIN package p "
-			+ "ON p.id = ap.package_id WHERE user_id = ?";
+//	private static String SELECT_PACKAGE_INFO_BY_USER = "SELECT * FROM activated_packages ap LEFT JOIN package p "
+//			+ "ON p.id = ap.package_id WHERE user_id = ? UNION SELECT * FROM activated_packages ap RIGHT JOIN package p "
+//			+ "ON p.id = ap.package_id WHERE user_id = ?";
+	private static String SELECT_PACKAGE_INFO_BY_USER = "WITH temp_table AS (SELECT * FROM activated_packages WHERE user_id = 'UID0001') "
+			+ "SELECT user_id, package_price_week, package_price_month, duration, package_name, upgrade_request, deactivation_request "
+			+ "FROM package p LEFT JOIN temp_table t ON t.package_id = p.id;";
 	
 	
 	public static List<Package> getAllProducts() {
@@ -56,8 +59,8 @@ public class PackageDAO {
 			
 			PreparedStatement stmtPackages = connection.prepareStatement(SELECT_PACKAGE_INFO_BY_USER);
 			
-			stmtPackages.setString(1, "UID0001");
-			stmtPackages.setString(2, "UID0001");
+//			stmtPackages.setString(1, "UID0001");
+//			stmtPackages.setString(2, "UID0001");
 			
 			ResultSet rs = stmtPackages.executeQuery();
 			
@@ -67,12 +70,6 @@ public class PackageDAO {
             	if (packageName == null)
             		continue;
             	
-//            	float weekPrice = rs.getFloat("package_price_week");
-//            	float monthPrice = rs.getFloat("package_price_month");
-//            	String currentDuration = rs.getString("duration");
-//            	boolean isUpgradeRequested = rs.getInt("upgrade_request") == 1;
-//            	boolean isDeactivationRequested = rs.getInt("deactivation_request") == 1;
-            	
             	instance = PackageFactory.getPackageInstance(packageName);
             	
             	if (instance == null)
@@ -80,14 +77,14 @@ public class PackageDAO {
             	
             	instance.setWeeklyPackagePrice(rs.getFloat("package_price_week"));
             	instance.setMonthlyPackagePrice(rs.getFloat("package_price_month"));
-            	instance.setCurrentlyActiveDuration(rs.getInt("duration"));
+        		instance.setCurrentlyActiveDuration(rs.getInt("duration"));
             	instance.setUpgradeRequested(rs.getInt("upgrade_request") == 1);
             	instance.setDeactivationRequested(rs.getInt("deactivation_request") == 1);
-            	
+
             	activePkgList.add(instance);
             }
 			
-		} catch(Exception e) {
+		} catch(Exception e) { 
 			e.printStackTrace();
 		}
 		

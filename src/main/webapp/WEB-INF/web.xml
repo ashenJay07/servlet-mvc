@@ -5,14 +5,18 @@
     <display-name>oop-epay-crud</display-name>
 
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-        <welcome-file>index.htm</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
-        <welcome-file>default.html</welcome-file>
-        <welcome-file>default.htm</welcome-file>
-        <welcome-file>default.jsp</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
 
+    <servlet>
+        <servlet-name>RedirectServlet</servlet-name>
+        <servlet-class>com.epay.controller.RedirectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RedirectServlet</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <display-name>PackageServlet</display-name>
         <servlet-name>PackageServlet</servlet-name>
@@ -31,7 +35,7 @@
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/submit-payment</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>Checkout</servlet-name>
         <servlet-class>com.epay.controller.PaymentServlet</servlet-class>
@@ -40,7 +44,7 @@
         <servlet-name>Checkout</servlet-name>
         <url-pattern>/checkout</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>UpdateRequest</servlet-name>
         <servlet-class>com.epay.controller.UserRequestServlet</servlet-class>
@@ -49,7 +53,7 @@
         <servlet-name>UpdateRequest</servlet-name>
         <url-pattern>/upgrade-package</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>DeleteRequest</servlet-name>
         <servlet-class>com.epay.controller.UserRequestServlet</servlet-class>
@@ -76,7 +80,7 @@
         <servlet-name>ActivatedPackages</servlet-name>
         <url-pattern>/admin/activated-packages</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>Upgrade</servlet-name>
         <servlet-class>com.epay.controller.AdminServlet</servlet-class>
@@ -85,7 +89,7 @@
         <servlet-name>Upgrade</servlet-name>
         <url-pattern>/admin/request/upgrade-requests</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>Deactivate</servlet-name>
         <servlet-class>com.epay.controller.AdminServlet</servlet-class>
@@ -94,7 +98,7 @@
         <servlet-name>Deactivate</servlet-name>
         <url-pattern>/admin/request/deactivation-requests</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>DeactivateById</servlet-name>
         <servlet-class>com.epay.controller.AdminServlet</servlet-class>
@@ -103,7 +107,7 @@
         <servlet-name>DeactivateById</servlet-name>
         <url-pattern>/admin/request/deactivate</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>UpgradeById</servlet-name>
         <servlet-class>com.epay.controller.AdminServlet</servlet-class>
@@ -114,6 +118,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>AdminValidate</servlet-name>
+        <servlet-class>com.epay.controller.AdminLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminValidate</servlet-name>
+        <url-pattern>/admin/admin-validate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>PaymentPage</servlet-name>
         <jsp-file>/pages/payment.jsp</jsp-file>
     </servlet>
@@ -121,15 +134,18 @@
         <servlet-name>PaymentPage</servlet-name>
         <url-pattern>/payment</url-pattern>
     </servlet-mapping>
-    
 
-    <!-- <servlet>
-        <servlet-name>TransactionPage</servlet-name>
-        <jsp-file>/pages/admin/transactions.jsp</jsp-file>
+    <servlet>
+        <servlet-name>AdminLoginPage</servlet-name>
+        <jsp-file>/pages/admin/admin-login.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>TransactionPage</servlet-name>
-        <url-pattern>/admin/transactions</url-pattern>
-    </servlet-mapping> -->
+        <servlet-name>AdminLoginPage</servlet-name>
+        <url-pattern>/admin/admin-login</url-pattern>
+    </servlet-mapping>
 
+    <error-page>
+        <error-code>404</error-code>
+        <location>/pages/error-page.jsp</location>
+    </error-page>
 </web-app>

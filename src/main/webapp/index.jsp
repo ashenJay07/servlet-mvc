@@ -123,9 +123,5 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
         </c:forEach>
       </div>
     </div>
-
-    <a href="/pages/package.html">Payment Page</a><br />
-    <a href="/pages/transactions.html">transactions Page</a><br />
-    <a href="/pages/activated-packages.html">activated-packages Page</a><br />
   </body>
 </html>

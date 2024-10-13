@@ -36,7 +36,7 @@ public class UserRequestDAO {
 	}
 	
 	
-	public static int makeDeactivationRequest(String packageName, String userId) {
+	public static boolean makeDeactivationRequest(String packageName, String userId) {
 		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
 		
 		try(Connection connection = dbInstance.getConnection()) {
@@ -51,13 +51,13 @@ public class UserRequestDAO {
 			
 			if (rowsUpdated > 0)
 				System.out.println("Deactivation Requested !!!");
-				return 1;
+				return true;
 			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return 0;
+		return false;
 	}
 	
 	private static int getPackageId(String packageName) {
