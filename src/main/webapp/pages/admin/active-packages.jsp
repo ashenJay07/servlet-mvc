@@ -31,13 +31,20 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
         <a href="/oop-epay-crud/admin/transactions"
           ><div class="action">Transactions</div></a
         >
-        <div class="action active">Activated Packages</div>
-        <div class="action">Unsubscribed Packages</div>
+        <a href="/oop-epay-crud/admin/activated-packages"
+          ><div class="action active">Activated Packages</div></a
+        >
+        <a href="/oop-epay-crud/admin/request/upgrade-requests"
+          ><div class="action">User Requests</div></a
+        >
       </div>
 
       <div class="dashboard__body">
-      	<p>Currently ${fn:length(activePackages)} data packages are in active state.</p>
-      
+        <p>
+          Currently ${fn:length(activePackages)} data packages are in active
+          state.
+        </p>
+
         <div class="table-wrapper table-responsive">
           <table class="table">
             <thead>

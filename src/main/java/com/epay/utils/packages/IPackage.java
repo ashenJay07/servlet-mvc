@@ -3,7 +3,6 @@ package com.epay.utils.packages;
 public interface IPackage {
 	String getPackageName();
 	String[] getPackageDetails();
-	float getPackagePrice();
 	float getWeeklyPackagePrice();
 	float getMonthlyPackagePrice();
 	int getCurrentlyActiveDuration();

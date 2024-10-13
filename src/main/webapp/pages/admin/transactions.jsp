@@ -27,11 +27,15 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
     <h1 class="dashboard-title">Admin Dashboard</h1>
     <div class="dashboard-wrapper">
       <div class="dashboard__actions">
-        <div class="action active">Transactions</div>
+        <a href="/oop-epay-crud/admin/transactions"
+          ><div class="action active">Transactions</div></a
+        >
         <a href="/oop-epay-crud/admin/activated-packages"
           ><div class="action">Activated Packages</div></a
         >
-        <div class="action">Unsubscribed Packages</div>
+        <a href="/oop-epay-crud/admin/request/upgrade-requests"
+          ><div class="action">User Requests</div></a
+        >
       </div>
 
       <div class="dashboard__body">

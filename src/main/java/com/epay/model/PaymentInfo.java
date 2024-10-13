@@ -46,185 +46,124 @@ public class PaymentInfo {
 		this.userId = userId;
 	}
 
-
-
 	public int getId() {
 		return id;
 	}
-
-
 
 	public String getPackageName() {
 		return packageName;
 	}
 
-
-
 	public float getTransAmount() {
 		return transAmount;
 	}
-
-
 
 	public String getCardHolder() {
 		return cardHolder;
 	}
 
-
-
 	public String getEmail() {
 		return email;
 	}
-
-
 
 	public String getCardNumber() {
 		return cardNumber;
 	}
 
-
-
 	public int getCardExpMonth() {
 		return cardExpMonth;
 	}
-
-
 
 	public int getCardExpYear() {
 		return cardExpYear;
 	}
 
-
-
 	public String getTransactionDate() {
 		return transactionDate;
 	}
-
-
 
 	public String getCvv() {
 		return cvv;
 	}
 
-
-
 	public String getUserId() {
 		return userId;
 	}
-
-
 
 	public int getPackageId() {
 		return packageId;
 	}
 
-
-
 	public int getPackageDuration() {
 		return packageDuration;
 	}
-
-
 
 	public Date getActivatedDate() {
 		return activatedDate;
 	}
 
-
-
 	public Date getExpireDate() {
 		return expireDate;
 	}
-
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-
 	public void setPackageName(String packageName) {
 		this.packageName = packageName;
 	}
-
-
 
 	public void setTransAmount(float transAmount) {
 		this.transAmount = transAmount;
 	}
 
-
-
 	public void setCardHolder(String cardHolder) {
 		this.cardHolder = cardHolder;
 	}
-
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
-
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
-
-
 
 	public void setCardExpMonth(int cardExpMonth) {
 		this.cardExpMonth = cardExpMonth;
 	}
 
-
-
 	public void setCardExpYear(int cardExpYear) {
 		this.cardExpYear = cardExpYear;
 	}
-
-
 
 	public void setTransactionDate(String transactionDate) {
 		this.transactionDate = transactionDate;
 	}
 
-
-
 	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
-
-
 
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
-
-
 	public void setPackageId(int packageId) {
 		this.packageId = packageId;
 	}
-
-
 
 	public void setPackageDuration(int packageDuration) {
 		this.packageDuration = packageDuration;
 	}
 
-
-
 	public void setActivatedDate(Date activatedDate) {
 		this.activatedDate = activatedDate;
 	}
-
-
 
 	public void setExpireDate(Date expireDate) {
 		this.expireDate = expireDate;
 	}
 
-	
 }

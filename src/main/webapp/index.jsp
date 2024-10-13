@@ -121,11 +121,6 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
             </div>
           </form>
         </c:forEach>
-
-        <!-- <form class="package" action="#" method="post">2</form>
-        <form class="package" action="#" method="post">3</form>
-        <form class="package" action="#" method="post">4</form>
-        <form class="package" action="#" method="post">5</form> -->
       </div>
     </div>
 

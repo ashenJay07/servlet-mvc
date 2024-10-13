@@ -9,7 +9,6 @@ public class UnlimitedBlaster implements IPackage {
 			"Unlimited high-speed data with a fair usage policy (speed is reduced after 100 GB).",
 			"Unlimited text messages to all local networks."
 	};
-	private float packagePrice = 50.0f;
 	private float weeklyPackagePrice = 250.0f;
 	private float monthlyPackagePrice = 200.0f;
 	private int currentlyActiveDuration;
@@ -31,10 +30,6 @@ public class UnlimitedBlaster implements IPackage {
 
 	public String[] getPackageDetails() {
 		return packageDetails;
-	}
-
-	public float getPackagePrice() {
-		return packagePrice;
 	}
 
 	public float getWeeklyPackagePrice() {
@@ -63,10 +58,6 @@ public class UnlimitedBlaster implements IPackage {
 
 	public void setPackageDetails(String[] packageDetails) {
 		this.packageDetails = packageDetails;
-	}
-
-	public void setPackagePrice(float packagePrice) {
-		this.packagePrice = packagePrice;
 	}
 
 	public void setWeeklyPackagePrice(float weeklyPackagePrice) {

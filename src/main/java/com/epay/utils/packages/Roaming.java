@@ -9,7 +9,6 @@ public class Roaming implements IPackage {
 			"500 minutes of international voice calls to select countries.",
 			"Free incoming calls while traveling internationally, with no extra charges."
 	};
-	private float packagePrice = 50.0f;
 	private float weeklyPackagePrice = 250.0f;
 	private float monthlyPackagePrice = 180.0f;
 	private int currentlyActiveDuration;
@@ -31,10 +30,6 @@ public class Roaming implements IPackage {
 
 	public String[] getPackageDetails() {
 		return packageDetails;
-	}
-
-	public float getPackagePrice() {
-		return packagePrice;
 	}
 
 	public float getWeeklyPackagePrice() {
@@ -63,10 +58,6 @@ public class Roaming implements IPackage {
 
 	public void setPackageDetails(String[] packageDetails) {
 		this.packageDetails = packageDetails;
-	}
-
-	public void setPackagePrice(float packagePrice) {
-		this.packagePrice = packagePrice;
 	}
 
 	public void setWeeklyPackagePrice(float weeklyPackagePrice) {

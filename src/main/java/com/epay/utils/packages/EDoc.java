@@ -9,7 +9,6 @@ public class EDoc implements IPackage {
 			"Free access to document-sharing services like Google Drive, Dropbox, and OneDrive without data usage.",
 			"Special browsing rates for online educational content and virtual classrooms."
 	};
-	private float packagePrice = 50.0f;
 	private float weeklyPackagePrice = 750.0f;
 	private float monthlyPackagePrice = 630.0f;
 	private int currentlyActiveDuration;
@@ -31,10 +30,6 @@ public class EDoc implements IPackage {
 
 	public String[] getPackageDetails() {
 		return packageDetails;
-	}
-
-	public float getPackagePrice() {
-		return packagePrice;
 	}
 
 	public float getWeeklyPackagePrice() {
@@ -63,10 +58,6 @@ public class EDoc implements IPackage {
 
 	public void setPackageDetails(String[] packageDetails) {
 		this.packageDetails = packageDetails;
-	}
-
-	public void setPackagePrice(float packagePrice) {
-		this.packagePrice = packagePrice;
 	}
 
 	public void setWeeklyPackagePrice(float weeklyPackagePrice) {

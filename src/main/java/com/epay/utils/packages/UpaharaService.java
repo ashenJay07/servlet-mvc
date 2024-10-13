@@ -9,7 +9,6 @@ public class UpaharaService implements IPackage {
 			"Unlimited free calls to two pre-registered numbers of your choice (friends or family).",
 			"500 minutes of local calls to other networks, with a competitive call rate for additional minutes."
 	};
-	private float packagePrice = 50.0f;
 	private float weeklyPackagePrice = 550.0f;
 	private float monthlyPackagePrice = 450.0f;
 	private int currentlyActiveDuration;
@@ -31,10 +30,6 @@ public class UpaharaService implements IPackage {
 
 	public String[] getPackageDetails() {
 		return packageDetails;
-	}
-
-	public float getPackagePrice() {
-		return packagePrice;
 	}
 
 	public float getWeeklyPackagePrice() {
@@ -63,10 +58,6 @@ public class UpaharaService implements IPackage {
 
 	public void setPackageDetails(String[] packageDetails) {
 		this.packageDetails = packageDetails;
-	}
-
-	public void setPackagePrice(float packagePrice) {
-		this.packagePrice = packagePrice;
 	}
 
 	public void setWeeklyPackagePrice(float weeklyPackagePrice) {

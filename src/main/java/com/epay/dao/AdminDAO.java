@@ -14,6 +14,7 @@ import com.epay.utils.DatabaseConfig;
 import com.epay.utils.packages.EDoc;
 import com.epay.utils.packages.FunBlaster;
 import com.epay.utils.packages.IPackage;
+import com.epay.utils.packages.PackageFactory;
 import com.epay.utils.packages.Roaming;
 import com.epay.utils.packages.UnlimitedBlaster;
 import com.epay.utils.packages.UpaharaService;
@@ -156,7 +157,7 @@ public class AdminDAO {
 			int rowsDeleted = stmt.executeUpdate();
 			
 			if (rowsDeleted > 0)
-				getPackageInstance(packageName).setCurrentlyActiveDuration(0);
+				PackageFactory.getPackageInstance(packageName).setCurrentlyActiveDuration(0);
 				return 1;
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -217,25 +218,25 @@ public class AdminDAO {
 		return 0;
 	}
 	
-	private static IPackage getPackageInstance(String packageType) {
-		IPackage instance = null;
-		
-		if (packageType.equalsIgnoreCase("Fun Blaster")) {
-			instance = FunBlaster.getInstance();
-		}
-		else if (packageType.equalsIgnoreCase("Unlimited Blaster")) {
-			instance = UnlimitedBlaster.getInstance();
-		}
-		else if (packageType.equalsIgnoreCase("Roaming")) {
-			instance = Roaming.getInstance();
-		}
-		else if (packageType.equalsIgnoreCase("E-Doc Service")) {
-			instance = EDoc.getInstance();
-		}
-		else if (packageType.equalsIgnoreCase("Upahara Service")) {
-			instance = UpaharaService.getInstance();
-		}
-		
-		return instance;
-	}
+//	private static IPackage getPackageInstance(String packageType) {
+//		IPackage instance = null;
+//		
+//		if (packageType.equalsIgnoreCase("Fun Blaster")) {
+//			instance = FunBlaster.getInstance();
+//		}
+//		else if (packageType.equalsIgnoreCase("Unlimited Blaster")) {
+//			instance = UnlimitedBlaster.getInstance();
+//		}
+//		else if (packageType.equalsIgnoreCase("Roaming")) {
+//			instance = Roaming.getInstance();
+//		}
+//		else if (packageType.equalsIgnoreCase("E-Doc Service")) {
+//			instance = EDoc.getInstance();
+//		}
+//		else if (packageType.equalsIgnoreCase("Upahara Service")) {
+//			instance = UpaharaService.getInstance();
+//		}
+//		
+//		return instance;
+//	}
 }

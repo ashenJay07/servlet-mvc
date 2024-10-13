@@ -10,6 +10,7 @@ import com.epay.utils.DatabaseConfig;
 import com.epay.utils.packages.EDoc;
 import com.epay.utils.packages.FunBlaster;
 import com.epay.utils.packages.IPackage;
+import com.epay.utils.packages.PackageFactory;
 import com.epay.utils.packages.Roaming;
 import com.epay.utils.packages.UnlimitedBlaster;
 import com.epay.utils.packages.UpaharaService;
@@ -72,7 +73,7 @@ public class PackageDAO {
 //            	boolean isUpgradeRequested = rs.getInt("upgrade_request") == 1;
 //            	boolean isDeactivationRequested = rs.getInt("deactivation_request") == 1;
             	
-            	instance = getPackageInstance(packageName);
+            	instance = PackageFactory.getPackageInstance(packageName);
             	
             	if (instance == null)
             		continue;
@@ -93,27 +94,25 @@ public class PackageDAO {
 		return activePkgList;
 	}
 	
-	private static IPackage getPackageInstance(String packageType) {
-		IPackage instance = null;
-		
-		if (packageType.equalsIgnoreCase("Fun Blaster")) {
-			instance = FunBlaster.getInstance();
-		}
-		else if (packageType.equalsIgnoreCase("Unlimited Blaster")) {
-			instance = UnlimitedBlaster.getInstance();
-		}
-		else if (packageType.equalsIgnoreCase("Roaming")) {
-			instance = Roaming.getInstance();
-		}
-		else if (packageType.equalsIgnoreCase("E-Doc Service")) {
-			instance = EDoc.getInstance();
-		}
-		else if (packageType.equalsIgnoreCase("Upahara Service")) {
-			instance = UpaharaService.getInstance();
-		}
-		
-		return instance;
-	}
-	
-	
+//	private static IPackage getPackageInstance(String packageType) {
+//		IPackage instance = null;
+//		
+//		if (packageType.equalsIgnoreCase("Fun Blaster")) {
+//			instance = FunBlaster.getInstance();
+//		}
+//		else if (packageType.equalsIgnoreCase("Unlimited Blaster")) {
+//			instance = UnlimitedBlaster.getInstance();
+//		}
+//		else if (packageType.equalsIgnoreCase("Roaming")) {
+//			instance = Roaming.getInstance();
+//		}
+//		else if (packageType.equalsIgnoreCase("E-Doc Service")) {
+//			instance = EDoc.getInstance();
+//		}
+//		else if (packageType.equalsIgnoreCase("Upahara Service")) {
+//			instance = UpaharaService.getInstance();
+//		}
+//		
+//		return instance;
+//	}
 }
