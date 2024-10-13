@@ -28,13 +28,12 @@ public class AdminServlet extends HttpServlet {
 	        dispatcher.forward(request, response);
 		}
 		if (request.getServletPath() == "/admin/request/upgrade-requests") {
-			System.out.println("Hi 1");
-//			request.setAttribute("activePackages", AdminDAO.getAllActivePackages());
+			request.setAttribute("upgradeRequests", AdminDAO.getRequestedPackages("upgrade"));
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/upgrade-requests.jsp");
 	        dispatcher.forward(request, response);
 		}
 		if (request.getServletPath() == "/admin/request/deactivation-requests") {
-//			request.setAttribute("activePackages", AdminDAO.getAllActivePackages());
+			request.setAttribute("deactivationRequests", AdminDAO.getRequestedPackages("deactivate"));
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/deactivation-requests.jsp");
 	        dispatcher.forward(request, response);
 		}

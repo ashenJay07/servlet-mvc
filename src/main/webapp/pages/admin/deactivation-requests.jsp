@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
+prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,19 +65,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>aliexpress@amazon.com</td>
-                <td>aliexpress@amazon.com</td>
-                <td>Lorem ipsum dolor</td>
-                <td>
-                  <button type="button" class="btn btn-danger">
-                    Deactivate
-                  </button>
-                </td>
-              </tr>
+              <c:forEach var="request" items="${deactivationRequests}">
+	              <tr>
+	                <th scope="row">${request.packageId}</th>
+	                <td>${request.packageName}</td>
+	                <td>${request.packageDuration}</td>
+	                <td>${request.activatedDate}</td>
+	                <td>${request.expireDate}</td>
+	                <td>${request.userId}</td>
+	                <td>
+	                  <button type="button" class="btn btn-danger">
+	                    Deactivate
+	                  </button>
+	                </td>
+	              </tr>
+              </c:forEach>
             </tbody>
           </table>
         </div>

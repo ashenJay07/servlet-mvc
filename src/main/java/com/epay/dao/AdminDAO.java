@@ -1,6 +1,7 @@
 package com.epay.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -13,6 +14,10 @@ import com.epay.utils.DatabaseConfig;
 public class AdminDAO {
 	private static String GET_ALL_TRANSACTIONS = "SELECT * FROM transaction_info";
 	private static String GET_ALL_ACTIVE_PACKAGES = "SELECT * FROM activated_packages";
+	private static String GET_UPGRADE_REQUESTED_PACKAGES = "SELECT ap.package_id, package_name, duration, activated_date, expire_date, "
+			+ "user_id FROM activated_packages ap LEFT JOIN package p ON p.id = ap.package_id WHERE upgrade_request = 1;";
+	private static String GET_DEACTIVATION_REQUESTED_PACKAGES = "SELECT ap.package_id, package_name, duration, activated_date, "
+			+ "expire_date, user_id FROM activated_packages ap LEFT JOIN package p ON p.id = ap.package_id WHERE deactivation_request = 1;";
 	
 	
 	public static List<PaymentInfo> getAllTransactions() {
@@ -41,6 +46,7 @@ public class AdminDAO {
 		return transactions;
 	}
 	
+	
 	public static List<PaymentInfo> getAllActivePackages() {
 		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
 		List<PaymentInfo> activePackages = new ArrayList<>();
@@ -65,6 +71,67 @@ public class AdminDAO {
 		}
 		
 		return activePackages;
+	}
+	
+	
+//	public static List<PaymentInfo> getUpgradeRequestedPackages(String reqType) {
+//		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
+//		List<PaymentInfo> packages = new ArrayList<>();
+//		
+//		try(Connection connection = dbInstance.getConnection()) {
+//			
+//			PreparedStatement preparedStatement = connection.prepareStatement(GET_UPGRADE_REQUESTED_PACKAGES);
+//			ResultSet rs = preparedStatement.executeQuery();
+//			
+//			while (rs.next()) {
+//                int pkgId = rs.getInt("package_id");
+//                String pkgName = rs.getString("package_name");
+//                int pkgDuration = rs.getInt("duration");
+//                Date activatedDate = rs.getDate("activated_date");
+//                Date expDate = rs.getDate("expire_date");
+//                String userId = rs.getString("user_id");
+//                
+//                packages.add(new PaymentInfo(pkgName, userId, pkgId, pkgDuration, activatedDate, expDate));
+//			}
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return packages;
+//	}
+	
+	
+	public static List<PaymentInfo> getRequestedPackages(String reqType) {
+		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
+		List<PaymentInfo> packages = new ArrayList<>();
 		
+		
+		
+		try(Connection connection = dbInstance.getConnection()) {
+			
+			PreparedStatement preparedStatement = null;
+			
+			if (reqType == "upgrade")
+				preparedStatement = connection.prepareStatement(GET_UPGRADE_REQUESTED_PACKAGES);
+			else if (reqType == "deactivate")
+				preparedStatement = connection.prepareStatement(GET_DEACTIVATION_REQUESTED_PACKAGES);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+                int pkgId = rs.getInt("package_id");
+                String pkgName = rs.getString("package_name");
+                int pkgDuration = rs.getInt("duration");
+                Date activatedDate = rs.getDate("activated_date");
+                Date expDate = rs.getDate("expire_date");
+                String userId = rs.getString("user_id");
+                
+                packages.add(new PaymentInfo(pkgName, userId, pkgId, pkgDuration, activatedDate, expDate));
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return packages;
 	}
 }
