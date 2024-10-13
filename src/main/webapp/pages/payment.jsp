@@ -110,6 +110,7 @@
         <input type="hidden" name="package-name" value="${packageName}" />
         <input type="hidden" name="transaction-amount" value="${packagePrice}" />
         <input type="hidden" name="package-duration" value="${packageDuration}" />
+        <input type="hidden" name="pending" value="${pending}" />
 
         <div class="form-text my-4">
           We'll never share your payment information with anyone else.

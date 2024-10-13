@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class AdminDAO {
 	private static String GET_DEACTIVATION_REQUESTED_PACKAGES = "SELECT ap.package_id, package_name, duration, activated_date, "
 			+ "expire_date, user_id FROM activated_packages ap LEFT JOIN package p ON p.id = ap.package_id WHERE deactivation_request = 1;";
 	private static String DEACTIVATE_PACKAGE_BY_ID = "DELETE FROM activated_packages WHERE package_id = ? AND user_id = ?;";
+	private static String UPGRADE_PACKAGE_BY_ID = "UPDATE activated_packages SET duration = 30, activated_date = ?, expire_date = ?, upgrade_request = null WHERE package_id = ? AND user_id = ?;";
 	
 	
 	public static List<PaymentInfo> getAllTransactions() {
@@ -143,7 +145,6 @@ public class AdminDAO {
 	
 	public static int deactivatePackage(int pkgId, String packageName, String userId) {
 		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
-		List<PaymentInfo> packages = new ArrayList<>();
 		
 		try(Connection connection = dbInstance.getConnection()) {
 			
@@ -161,6 +162,58 @@ public class AdminDAO {
 			e.printStackTrace();
 		}
 		
+		return 0;
+	}
+	
+	public static int upgradePackage(int pkgId, String packageName, String userId) {
+		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
+		
+		try(Connection connection = dbInstance.getConnection()) {
+			LocalDate activationDate = LocalDate.now();
+			LocalDate expireDate = activationDate.plusDays(30);
+			
+//			float monthlyPackagePrice = getPackgePrice(pkgId);
+			
+			PreparedStatement stmt = connection.prepareStatement(UPGRADE_PACKAGE_BY_ID);
+			stmt.setDate(1, Date.valueOf(activationDate));
+			stmt.setDate(2, Date.valueOf(expireDate));
+			stmt.setInt(3, pkgId);
+			stmt.setString(4, userId);
+			
+//			System.out.println("Admin - " + getPackageInstance(packageName).getWeeklyPackagePrice());
+//			System.out.println("Admin - " + getPackageInstance(packageName).getMonthlyPackagePrice());
+			
+			int rowsUpdated = stmt.executeUpdate();
+			
+			if (rowsUpdated > 0) {
+				System.out.println("Package upgraded successfully !!!");
+				return 1;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+	
+	private static float getPackgePrice(int pkgId) {
+		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
+		
+		try(Connection connection = dbInstance.getConnection()) {
+			
+			PreparedStatement stmt = connection.prepareStatement("SELECT package_price_month FROM package WHERE id = ?");
+			stmt.setInt(1, pkgId);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				return rs.getFloat("package_price_month");				
+			}
+			throw new Error("Package price not found");
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 	

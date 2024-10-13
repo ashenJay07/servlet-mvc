@@ -48,6 +48,13 @@ public class AdminServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/deactivation-requests.jsp");
 	        dispatcher.forward(request, response);
 		}
+		else if (request.getServletPath() == "/admin/request/upgrade") {
+			int packageId = Integer.parseInt(request.getParameter("packageId"));
+			String packageName = request.getParameter("packageName");
+			String userId = request.getParameter("userId");
+			
+			AdminDAO.upgradePackage(packageId, packageName, userId);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

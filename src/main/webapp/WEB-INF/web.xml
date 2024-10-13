@@ -103,6 +103,15 @@
         <servlet-name>DeactivateById</servlet-name>
         <url-pattern>/admin/request/deactivate</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>UpgradeById</servlet-name>
+        <servlet-class>com.epay.controller.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpgradeById</servlet-name>
+        <url-pattern>/admin/request/upgrade</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>PaymentPage</servlet-name>

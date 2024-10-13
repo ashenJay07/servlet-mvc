@@ -24,6 +24,7 @@ public class PaymentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		if (request.getServletPath() == "/checkout") {
+			boolean isPending = Boolean.parseBoolean(request.getParameter("upgrade"));
 			int pkgDuration = Integer.parseInt(request.getParameter("duration"));
 			float pkgPrice = 0;
 			
@@ -32,9 +33,16 @@ public class PaymentServlet extends HttpServlet {
 			else		
 				pkgPrice = Float.parseFloat(request.getParameter("monthly-package-price"));
 			
+			
+			if (isPending) {
+				pkgPrice = Float.parseFloat(request.getParameter("monthly-package-price"));
+				pkgDuration = 30;
+			}
+			
 			request.setAttribute("packageName", request.getParameter("package-name"));
 			request.setAttribute("packageDuration", pkgDuration);
 			request.setAttribute("packagePrice", pkgPrice);
+			request.setAttribute("pending", isPending);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("pages/payment.jsp");
 	        dispatcher.forward(request, response);
@@ -43,6 +51,7 @@ public class PaymentServlet extends HttpServlet {
 			
 			PaymentInfo paymentInstance = new PaymentInfo();
 			AESEncryption aesEncryption;
+			boolean isPending = false;
 			
 			try {
 				aesEncryption = new AESEncryption();
@@ -61,7 +70,7 @@ public class PaymentServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			PaymentDAO.makePayment(paymentInstance);
+			PaymentDAO.makePayment(paymentInstance, Boolean.parseBoolean(request.getParameter("pending")));
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 	        dispatcher.forward(request, response);

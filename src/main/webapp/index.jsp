@@ -113,7 +113,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
               <button
                 type="submit"
                 class="btn btn-warning"
-                formaction="upgrade-package"
+                formaction="checkout?upgrade=true"
                 ${cusPackage.currentlyActiveDuration == 30 ? 'disabled' : ''}
               >
                 Upgrade

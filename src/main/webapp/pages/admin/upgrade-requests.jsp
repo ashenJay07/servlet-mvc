@@ -74,7 +74,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                     <button
                       type="button"
                       class="btn btn-warning"
-                      onclick="window.location.href='deactivate';"
+                      onclick="window.location.href='upgrade?packageId=${request.packageId}&packageName=${request.packageName}&userId=${request.userId}';"
                     >
                       Upgrade
                     </button>
