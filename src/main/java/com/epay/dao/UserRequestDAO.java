@@ -15,19 +15,19 @@ public class UserRequestDAO {
 		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
 		
 		try(Connection connection = dbInstance.getConnection()) {
-			
+
 			int packageId = getPackageId(packageName);
 			
-			PreparedStatement stmt = connection.prepareStatement(MAKE_UPGRADE_REQUEST);
-			stmt.setInt(1, packageId);
-			stmt.setString(2, userId);
+			PreparedStatement stmt2 = connection.prepareStatement(MAKE_UPGRADE_REQUEST);
+			stmt2.setInt(1, packageId);
+			stmt2.setString(2, userId);
 			
-			int rowsUpdated = stmt.executeUpdate();
+			int rowsUpdated = stmt2.executeUpdate();
 			
-			if (rowsUpdated > 0)
-				System.out.println("Upgrade Requested !!!");
+			if (rowsUpdated > 0) {
+				System.out.println("Update Requested !!!");
 				return 1;
-			
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

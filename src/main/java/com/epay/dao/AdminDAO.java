@@ -173,22 +173,38 @@ public class AdminDAO {
 			LocalDate activationDate = LocalDate.now();
 			LocalDate expireDate = activationDate.plusDays(30);
 			
+			connection.setAutoCommit(false);
+			
+			PreparedStatement stmt0 = connection.prepareStatement("UPDATE transaction_info SET is_pending = null WHERE package_id = ? "
+					+ "AND user_id = ? AND is_pending = 1");
+			stmt0.setInt(1, pkgId);
+			stmt0.setString(2, userId);
+			
+			int rowsUpdated = stmt0.executeUpdate();
+			
 //			float monthlyPackagePrice = getPackgePrice(pkgId);
 			
-			PreparedStatement stmt = connection.prepareStatement(UPGRADE_PACKAGE_BY_ID);
-			stmt.setDate(1, Date.valueOf(activationDate));
-			stmt.setDate(2, Date.valueOf(expireDate));
-			stmt.setInt(3, pkgId);
-			stmt.setString(4, userId);
-			
-//			System.out.println("Admin - " + getPackageInstance(packageName).getWeeklyPackagePrice());
-//			System.out.println("Admin - " + getPackageInstance(packageName).getMonthlyPackagePrice());
-			
-			int rowsUpdated = stmt.executeUpdate();
-			
 			if (rowsUpdated > 0) {
-				System.out.println("Package upgraded successfully !!!");
-				return 1;
+				PreparedStatement stmt = connection.prepareStatement(UPGRADE_PACKAGE_BY_ID);
+				stmt.setDate(1, Date.valueOf(activationDate));
+				stmt.setDate(2, Date.valueOf(expireDate));
+				stmt.setInt(3, pkgId);
+				stmt.setString(4, userId);
+				
+//				System.out.println("Admin - " + getPackageInstance(packageName).getWeeklyPackagePrice());
+//				System.out.println("Admin - " + getPackageInstance(packageName).getMonthlyPackagePrice());
+				
+				rowsUpdated = stmt.executeUpdate();
+				
+				if (rowsUpdated > 0) {
+					connection.commit();
+					System.out.println("Package upgraded successfully !!!");
+					return 1;
+				}
+				else {
+					connection.rollback();
+				}
+				
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
