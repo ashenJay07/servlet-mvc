@@ -6,7 +6,7 @@
   <head>
     <meta charset="ISO-8859-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ePay | Admin Login</title>
+    <title>Telex | Admin Login</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"

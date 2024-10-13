@@ -14,13 +14,14 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <title>ePay | Admin</title>
-    <!-- <link rel="stylesheet" href="/styles/admin.css" /> -->
+    <title>Telex | Admin</title>
+    <!-- <link rel="stylesheet" href="/styles/index.css" /> -->
     <link rel="stylesheet" href="/oop-epay-crud/css/admin.css" />
 
     <style>
       .active {
-        background-color: lightblue;
+        color: white !important;
+        background-color: #000080;
       }
     </style>
   </head>
@@ -41,8 +42,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
       <div class="dashboard__body">
         <p>
-          Currently ${fn:length(activePackages)} data packages are in active
-          state.
+          There are ${fn:length(activePackages)} active packages in the database.
         </p>
 
         <div class="table-wrapper table-responsive">

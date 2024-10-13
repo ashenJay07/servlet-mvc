@@ -1,8 +1,19 @@
 @charset "ISO-8859-1";
 
+.title-bar {
+  background-color: #000080;
+  padding: 20px 50px;
+  margin-bottom: 40px;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.title-bar h1 {
+  font-size: 3rem;
+}
+
 .package-wrapper {
-  /* background-color: rgb(255, 211, 161); */
-  padding: 40px 25px;
+  padding: 0px 25px 40px;
   min-height: 100vh;
 }
 
@@ -16,7 +27,7 @@
 .package {
   width: 100%;
   /* background-color: rgb(85, 119, 229); */
-  border: 2px solid black;
+  border: 2px solid #000080;
   border-radius: 20px;
   overflow: hidden;
   padding-bottom: 15px;
@@ -24,10 +35,11 @@
 }
 
 .package__title {
-  background-color: #d8d8d4;
+  background-color: #ececec;
   padding: 25px 0;
   text-align: center;
   border-bottom: 1px solid grey;
+  color: #000080;
 }
 
 .package ul {

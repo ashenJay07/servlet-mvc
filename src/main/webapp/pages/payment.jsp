@@ -16,7 +16,7 @@
     />
     <link rel="stylesheet" href="/oop-epay-crud/css/payment.css" />
     <!-- <link rel="stylesheet" href="/styles/payment.css" /> -->
-    <title>ePay | Payment</title>
+    <title>Telex | Payment</title>
   </head>
   <body>
     <div class="form-wrapper">

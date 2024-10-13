@@ -1,5 +1,10 @@
 @charset "ISO-8859-1";
 
+body {
+  background: rgb(232,232,232);
+  background: linear-gradient(139deg, rgba(232,232,232,1) 0%, rgba(255,255,255,1) 16%, rgba(232,232,232,1) 100%);
+}
+
 .form-wrapper {
   width: 70vw;
   margin: auto;
@@ -7,7 +12,7 @@
 }
 
 .form-wrapper .form-header {
-  padding: 30px 0;
+  padding: 50px 0 30px;
   /* background-color: pink; */
   border-bottom: 2px solid lightgray;
 }

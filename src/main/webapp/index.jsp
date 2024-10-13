@@ -17,10 +17,14 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
     <!-- <link rel="stylesheet" href="styles/index.css" /> -->
     <link rel="stylesheet" href="/oop-epay-crud/css/index.css" />
 
-    <title>ePay | packages</title>
+    <title>Telex | Packages</title>
   </head>
   <body>
     <div class="package-wrapper">
+      <div class="title-bar">
+        <h1>Telex</h1>
+      </div>
+
       <div class="package__container">
         <c:forEach var="cusPackage" items="${pkgInstances}" varStatus="status">
           <form class="package" action="#" method="post">
@@ -47,7 +51,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 checked
               />
               <label
-                class="btn btn-outline-primary"
+                class="btn btn-outline-secondary"
                 for="btnradio1-${status.index}"
               >
                 <span>7 days</span>
@@ -63,7 +67,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
               id="btnradio2-${status.index}" autocomplete="off"
               ${cusPackage.currentlyActiveDuration == 30 ? 'checked' : ''} />
               <label
-                class="btn btn-outline-primary"
+                class="btn btn-outline-secondary"
                 for="btnradio2-${status.index}"
               >
                 <span>30 days</span>
@@ -123,8 +127,8 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
         </c:forEach>
       </div>
     </div>
-    
- 	<div class="alert-box-wrapper hide">
+
+    <div class="alert-box-wrapper hide">
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those
         fields below.
@@ -142,6 +146,5 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    
   </body>
 </html>

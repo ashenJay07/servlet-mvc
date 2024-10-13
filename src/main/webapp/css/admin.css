@@ -14,8 +14,9 @@ a:hover {
   text-align: center;
   padding: 20px 10px;
   margin: 0;
-  border-bottom: 3px solid black;
-  color: rgb(101, 111, 243);
+  border-bottom: 3px solid #000080;
+  color: rgb(202, 202, 202);
+  background-color: #000080;
 }
 
 .dashboard-wrapper {
@@ -52,16 +53,18 @@ a:hover {
 .dashboard__actions .action {
   /* background-color: yellow; */
   border-radius: 15px;
-  border: 2px solid lightblue;
+  border: 2px solid #000080;
   cursor: pointer;
   overflow: hidden;
   padding: 10px 20px;
   text-wrap: nowrap;
+  color: #000080;
 }
 
 .dashboard__actions .action:hover {
-  background-color: lightblue;
+  background-color: #000080;
   transition: background-color 300ms;
+  color: white;
 }
 
 /* .table-wrapper {

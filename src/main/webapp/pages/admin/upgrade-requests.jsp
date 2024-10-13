@@ -13,13 +13,14 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <title>ePay | Admin</title>
+    <title>Telex | Admin</title>
     <!-- <link rel="stylesheet" href="/styles/admin.css" /> -->
     <link rel="stylesheet" href="/oop-epay-crud/css/admin.css" />
 
     <style>
       .active {
-        background-color: lightblue;
+        color: white !important;
+        background-color: #000080;
       }
     </style>
   </head>
