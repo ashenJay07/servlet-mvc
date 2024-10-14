@@ -51,17 +51,19 @@ public class PaymentServlet extends HttpServlet {
 			
 			PaymentInfo paymentInstance = new PaymentInfo();
 			AESEncryption aesEncryption;
-			boolean isPending = false;
 			
 			try {
 				aesEncryption = new AESEncryption();
+				
+				String cardNumber = request.getParameter("card-number");
+				cardNumber = cardNumber.replaceAll(" - ", "");
 				
 				paymentInstance.setPackageName(request.getParameter("package-name"));
 				paymentInstance.setTransAmount(Float.parseFloat(request.getParameter("transaction-amount")));
 				paymentInstance.setPackageDuration(Integer.parseInt(request.getParameter("package-duration")));
 				paymentInstance.setEmail(request.getParameter("email"));
 				paymentInstance.setCardHolder(request.getParameter("card-holder"));
-				paymentInstance.setCardNumber(aesEncryption.encrypt(request.getParameter("card-number")));
+				paymentInstance.setCardNumber(aesEncryption.encrypt(cardNumber));
 				paymentInstance.setCardExpMonth(Integer.parseInt(request.getParameter("exp-month")));
 				paymentInstance.setCardExpYear(Integer.parseInt(request.getParameter("exp-year")));
 				paymentInstance.setCvv(aesEncryption.encrypt(request.getParameter("cvv")));

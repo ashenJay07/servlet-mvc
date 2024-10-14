@@ -68,6 +68,7 @@
             class="form-control"
             id="card-number"
             name="card-number"
+            maxlength="25"
             required
           />
         </div>
@@ -80,6 +81,7 @@
               class="form-control"
               id="exp-month"
               name="exp-month"
+              maxlength="2"
               required
             />
           </div>
@@ -91,6 +93,7 @@
               class="form-control"
               id="exp-year"
               name="exp-year"
+              maxlength="4"
               required
             />
           </div>
@@ -102,6 +105,7 @@
               class="form-control"
               id="cvv"
               name="cvv"
+              maxlength="3"
               required
             />
           </div>
@@ -121,5 +125,30 @@
         </button>
       </form>
     </div>
+    
+    <script>
+	    document.getElementById('card-number').addEventListener('input', function (e) {
+	    	// Prevent default input behavior
+	        e.preventDefault();
+	    	
+	        let input = this.value.replace(/[^0-9]/g, '');
+	        const formattedInput = [];
+	        
+	     	// Limit to 16 digits
+	        if (input.length > 16) {
+	            input = input.slice(0, 16);
+	        }
+	
+	        // Format the input
+	        for (let i = 0; i < input.length; i++) {
+	            if (i > 0 && i % 4 === 0) {
+	                formattedInput.push(' - ');
+	            }
+	            formattedInput.push(input[i]);
+	        }
+	
+	        this.value = formattedInput.join('');
+	    });
+    </script>
   </body>
 </html>
