@@ -28,8 +28,6 @@ public class PaymentDAO {
 	public static int makePayment(PaymentInfo formData, boolean isPending) {
 		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
 		
-		System.out.println("Is pending ? - " + isPending);
-		
 		try(Connection connection = dbInstance.getConnection()) {
 			// Turn off auto-commit for transaction management
             connection.setAutoCommit(false);
@@ -68,8 +66,6 @@ public class PaymentDAO {
 				
 				if (numOfRowsAffected > 0) {
 					connection.commit();
-					System.out.println("Data Insertion to both");
-					System.out.println("Data inserted to both tables successfully !!!");
 					return 1;
 				}
 				else {
@@ -78,8 +74,6 @@ public class PaymentDAO {
 				}
 
 			}
-			else
-				System.out.println("Insertion Unsuccessfull !!!");
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -109,12 +103,10 @@ public class PaymentDAO {
 			stmtActivePackage.setString(5, userId);
 			
 			int rowsInsertedPackages = stmtActivePackage.executeUpdate();
-//			int rowsInsertedPackages = 0;
 			
 			if (rowsInsertedPackages > 0) {
 				return rowsInsertedPackages;
 			} else {
-//				connection.rollback();
 				System.err.println("Data insertion unsuccessful !!!");
 			}
 		} catch (Exception e) {
@@ -131,7 +123,6 @@ public class PaymentDAO {
 		try(Connection connection = dbInstance.getConnection()) {
 			
 			int packageId = getPackageId(packageName);
-			System.out.println("update req = "+ packageId);
 			
 			PreparedStatement stmt = connection.prepareStatement(MAKE_UPGRADE_REQUEST);
 			stmt.setInt(1, packageId);
@@ -140,7 +131,6 @@ public class PaymentDAO {
 			int rowsUpdated = stmt.executeUpdate();
 			
 			if (rowsUpdated > 0)
-				System.out.println("Upgrade Requested !!!");
 				return rowsUpdated;
 			
 		} catch(Exception e) {
@@ -153,7 +143,6 @@ public class PaymentDAO {
 	
 	private static int getPackageId(String packageName) {
 		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
-		System.out.println(packageName);
 		
 		try(Connection connection = dbInstance.getConnection()) {
 			

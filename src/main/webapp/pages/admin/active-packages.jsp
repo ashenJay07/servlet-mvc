@@ -15,7 +15,6 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
       crossorigin="anonymous"
     />
     <title>Telex | Admin</title>
-    <!-- <link rel="stylesheet" href="/styles/index.css" /> -->
     <link rel="stylesheet" href="/oop-epay-crud/css/admin.css" />
 
     <style>

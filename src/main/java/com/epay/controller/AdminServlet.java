@@ -17,7 +17,6 @@ public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(Admin.getInstance().getAdminEmail());
 		
 		// URL parts ---> request.getRequestURL().toString(), request.getContextPath(), request.getServletPath()
 		if (request.getServletPath() == "/admin/transactions") {
@@ -44,8 +43,6 @@ public class AdminServlet extends HttpServlet {
 			int packageId = Integer.parseInt(request.getParameter("packageId"));
 			String packageName = request.getParameter("packageName");
 			String userId = request.getParameter("userId");
-			
-			System.out.println(packageId + " " + userId);
 			
 			AdminDAO.deactivatePackage(packageId, packageName, userId);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/admin/deactivation-requests.jsp");

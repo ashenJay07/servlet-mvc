@@ -84,34 +84,6 @@ public class AdminDAO {
 		return activePackages;
 	}
 	
-	
-//	public static List<PaymentInfo> getUpgradeRequestedPackages(String reqType) {
-//		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
-//		List<PaymentInfo> packages = new ArrayList<>();
-//		
-//		try(Connection connection = dbInstance.getConnection()) {
-//			
-//			PreparedStatement preparedStatement = connection.prepareStatement(GET_UPGRADE_REQUESTED_PACKAGES);
-//			ResultSet rs = preparedStatement.executeQuery();
-//			
-//			while (rs.next()) {
-//                int pkgId = rs.getInt("package_id");
-//                String pkgName = rs.getString("package_name");
-//                int pkgDuration = rs.getInt("duration");
-//                Date activatedDate = rs.getDate("activated_date");
-//                Date expDate = rs.getDate("expire_date");
-//                String userId = rs.getString("user_id");
-//                
-//                packages.add(new PaymentInfo(pkgName, userId, pkgId, pkgDuration, activatedDate, expDate));
-//			}
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return packages;
-//	}
-	
-	
 	public static List<PaymentInfo> getRequestedPackages(String reqType) {
 		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
 		List<PaymentInfo> packages = new ArrayList<>();
@@ -192,14 +164,10 @@ public class AdminDAO {
 				stmt.setInt(3, pkgId);
 				stmt.setString(4, userId);
 				
-//				System.out.println("Admin - " + getPackageInstance(packageName).getWeeklyPackagePrice());
-//				System.out.println("Admin - " + getPackageInstance(packageName).getMonthlyPackagePrice());
-				
 				rowsUpdated = stmt.executeUpdate();
 				
 				if (rowsUpdated > 0) {
 					connection.commit();
-					System.out.println("Package upgraded successfully !!!");
 					return 1;
 				}
 				else {
@@ -234,26 +202,5 @@ public class AdminDAO {
 		}
 		return 0;
 	}
-	
-//	private static IPackage getPackageInstance(String packageType) {
-//		IPackage instance = null;
-//		
-//		if (packageType.equalsIgnoreCase("Fun Blaster")) {
-//			instance = FunBlaster.getInstance();
-//		}
-//		else if (packageType.equalsIgnoreCase("Unlimited Blaster")) {
-//			instance = UnlimitedBlaster.getInstance();
-//		}
-//		else if (packageType.equalsIgnoreCase("Roaming")) {
-//			instance = Roaming.getInstance();
-//		}
-//		else if (packageType.equalsIgnoreCase("E-Doc Service")) {
-//			instance = EDoc.getInstance();
-//		}
-//		else if (packageType.equalsIgnoreCase("Upahara Service")) {
-//			instance = UpaharaService.getInstance();
-//		}
-//		
-//		return instance;
-//	}
+
 }

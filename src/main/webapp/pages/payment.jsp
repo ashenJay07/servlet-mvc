@@ -15,17 +15,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/oop-epay-crud/css/payment.css" />
-    <!-- <link rel="stylesheet" href="/styles/payment.css" /> -->
     <title>Telex | Payment</title>
   </head>
   <body>
     <div class="form-wrapper">
-      <!-- <div class="form-header">
-        <h1>Package 01</h1>
-        <span class="package-price">350.00</span>
-        <span>7 Day Plan</span>
-      </div> -->
-
+      
       <div class="form-header">
         <h1>${packageName}</h1>
         <span class="package-price"

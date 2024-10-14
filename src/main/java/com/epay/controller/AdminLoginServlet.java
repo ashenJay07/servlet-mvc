@@ -14,14 +14,10 @@ import com.epay.model.users.Admin;
 public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Admin admin = Admin.getInstance();
-       
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		var result = admin.validate(request.getParameter("email"), request.getParameter("password"));
 		
-		System.out.println("///" + result);
 
 		if (result) {
 			HttpSession session = request.getSession();

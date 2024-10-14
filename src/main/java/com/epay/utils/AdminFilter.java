@@ -21,13 +21,12 @@ public class AdminFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession(false);
         
-        System.out.println("**_" + session.getAttribute("admin"));
-        System.out.println("**__" + (session != null));
 
         if (session != null && session.getAttribute("admin") != null) {
             chain.doFilter(request, response);  // Allow access
         } else {
-            res.sendRedirect("/oop-epay-crud/admin-login?error=true");  // Redirect to login if not logged in
+        	// Redirect to login if not logged in
+            res.sendRedirect("/oop-epay-crud/admin-login?error=true");  
         }
 		
 	}

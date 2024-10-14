@@ -25,7 +25,6 @@ public class UserRequestDAO {
 			int rowsUpdated = stmt2.executeUpdate();
 			
 			if (rowsUpdated > 0) {
-				System.out.println("Update Requested !!!");
 				return 1;
 			}
 		} catch(Exception e) {
@@ -50,7 +49,6 @@ public class UserRequestDAO {
 			int rowsUpdated = stmt.executeUpdate();
 			
 			if (rowsUpdated > 0)
-				System.out.println("Deactivation Requested !!!");
 				return true;
 			
 		} catch(Exception e) {
@@ -62,7 +60,6 @@ public class UserRequestDAO {
 	
 	private static int getPackageId(String packageName) {
 		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
-		System.out.println(packageName);
 		
 		try(Connection connection = dbInstance.getConnection()) {
 			

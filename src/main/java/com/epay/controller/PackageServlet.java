@@ -26,14 +26,10 @@ import com.epay.utils.packages.UpaharaService;
 public class PackageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(User.getInstance().getUserId());
-		
-//		List<Package> pkgNames = packageDAO.getAllProducts();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		List<IPackage> pkgInstances = new ArrayList<>();
 		List<IPackage> activePkgInstances = null;
 
-//		System.out.println(UnlimitedBlaster.getInstance().getPackageName());
 		
 		pkgInstances.add(UnlimitedBlaster.getInstance());
 		pkgInstances.add(FunBlaster.getInstance());

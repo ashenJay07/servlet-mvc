@@ -14,7 +14,6 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
       crossorigin="anonymous"
     />
     <title>Telex | Admin</title>
-    <!-- <link rel="stylesheet" href="/styles/admin.css" /> -->
     <link rel="stylesheet" href="/oop-epay-crud/css/admin.css" />
 
     <style>
@@ -70,23 +69,6 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 </tr>
               </c:forEach>
             </tbody>
-
-            <!-- <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>aliexpress@amazon.com</td>
-                <td>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Nihil, dolorem.
-                </td>
-                <td>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Asperiores, officia.
-                </td>
-              </tr>
-            </tbody> -->
           </table>
         </div>
       </div>
