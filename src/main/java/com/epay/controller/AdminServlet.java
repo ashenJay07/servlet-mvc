@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epay.dao.AdminDAO;
+import com.epay.model.users.Admin;
 
 // @WebServlet("/admin/transactions")
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(Admin.getInstance().getAdminEmail());
+		
 		// URL parts ---> request.getRequestURL().toString(), request.getContextPath(), request.getServletPath()
 		if (request.getServletPath() == "/admin/transactions") {
 			request.setAttribute("transactions", AdminDAO.getAllTransactions());

@@ -44,11 +44,15 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
           <button
             type="button"
             class="btn btn-outline-secondary"
-            onclick="window.location.href='/oop-epay-crud/admin/request/upgrade-requests';"
+            onclick="window.location.href='upgrade-requests';"
           >
             Upgrade Requests
           </button>
-          <button type="button" class="btn btn-outline-secondary">
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            onclick="window.location.href='deactivation-requests';"
+          >
             Deactivation Requests
           </button>
         </div>

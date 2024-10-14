@@ -111,6 +111,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 type="submit"
                 class="btn btn-danger"
                 formaction="deactivate-package"
+                onclick="alert('Confirm to request deactivation')"
               >
                 Deactivate
               </button>

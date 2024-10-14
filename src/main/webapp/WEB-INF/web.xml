@@ -16,7 +16,7 @@
         <servlet-name>RedirectServlet</servlet-name>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <display-name>PackageServlet</display-name>
         <servlet-name>PackageServlet</servlet-name>
@@ -123,8 +123,18 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminValidate</servlet-name>
-        <url-pattern>/admin/admin-validate</url-pattern>
+        <url-pattern>/admin-validate</url-pattern>
     </servlet-mapping>
+
+    <filter>
+        <filter-name>AdminFilter</filter-name>
+        <filter-class>com.epay.utils.AdminFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AdminFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
 
     <servlet>
         <servlet-name>PaymentPage</servlet-name>
@@ -141,7 +151,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminLoginPage</servlet-name>
-        <url-pattern>/admin/admin-login</url-pattern>
+        <url-pattern>/admin-login</url-pattern>
     </servlet-mapping>
 
     <error-page>

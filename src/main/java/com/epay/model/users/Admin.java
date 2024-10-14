@@ -22,16 +22,19 @@ public class Admin {
         return instance;
     }
 
-    public void setLoginCredentials(String adminEmail, String adminPassword) {
+    public void setLoginCredentials(String adminUID, String adminName, String adminEmail, String adminPassword) {
+    	this.adminUID = adminUID;
+    	this.adminName = adminName;
         this.adminEmail = adminEmail;
         this.adminPassword = adminPassword;
     }
 
-    public boolean login(String adminEmail, String adminPassword) {
-    	if (this.adminEmail.equalsIgnoreCase(adminEmail) && this.adminPassword.equals(adminPassword)) {
-            return true;
-        }
-        return false;
+    public boolean validate(String adminEmail, String adminPassword) {
+    	return this.adminEmail.equalsIgnoreCase(adminEmail) && this.adminPassword.equals(adminPassword);
+    }
+    
+    public String getAdminId() {
+        return adminUID;
     }
 
     public String getAdminName() {

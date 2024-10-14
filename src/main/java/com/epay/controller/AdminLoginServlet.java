@@ -6,24 +6,30 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.epay.model.users.Admin;
 
 // @WebServlet("/admin-validate")
 public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Admin admin = Admin.getInstance();
        
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Admin admin = Admin.getInstance();
-		var result = admin.login(request.getParameter("email"), request.getParameter("password"));
+		var result = admin.validate(request.getParameter("email"), request.getParameter("password"));
+		
+		System.out.println("///" + result);
 
-		if (result)
-			response.sendRedirect("transactions");
-		else
-			response.sendRedirect("admin-login");
+		if (result) {
+			HttpSession session = request.getSession();
+			session.setAttribute("admin", true);
+			response.sendRedirect("/oop-epay-crud/admin/transactions");
+		} else {
+			response.sendRedirect("/oop-epay-crud/admin-login?error=truez");
+		}
 	}
 
 }
