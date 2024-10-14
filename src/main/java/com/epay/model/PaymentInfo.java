@@ -11,7 +11,7 @@ public class PaymentInfo {
 	private String cardNumber;
 	private int cardExpMonth;
 	private int cardExpYear;
-	private String transactionDate;
+	private Date transactionDate;
 	private String cvv;
 	private String userId;
 	private int packageId;
@@ -37,7 +37,7 @@ public class PaymentInfo {
 		this.expireDate = expireDate;
 	}
 	
-	public PaymentInfo(int id, float transAmount, String cardHolder, String email, String transactionDate, String userId) {
+	public PaymentInfo(int id, float transAmount, String cardHolder, String email, Date transactionDate, String userId) {
 		this.id = id;
 		this.transAmount = transAmount;
 		this.cardHolder = cardHolder;
@@ -78,7 +78,7 @@ public class PaymentInfo {
 		return cardExpYear;
 	}
 
-	public String getTransactionDate() {
+	public Date getTransactionDate() {
 		return transactionDate;
 	}
 
@@ -138,7 +138,7 @@ public class PaymentInfo {
 		this.cardExpYear = cardExpYear;
 	}
 
-	public void setTransactionDate(String transactionDate) {
+	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
 	}
 

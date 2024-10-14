@@ -15,6 +15,7 @@ import com.epay.utils.packages.Roaming;
 import com.epay.utils.packages.UnlimitedBlaster;
 import com.epay.utils.packages.UpaharaService;
 import com.epay.model.Package;
+import com.epay.model.users.User;
 
 public class PackageDAO {
 //	private String SELECT_ALL_PACKAGE_NAMES = "SELECT package_name FROM package";
@@ -22,7 +23,7 @@ public class PackageDAO {
 //	private static String SELECT_PACKAGE_INFO_BY_USER = "SELECT * FROM activated_packages ap LEFT JOIN package p "
 //			+ "ON p.id = ap.package_id WHERE user_id = ? UNION SELECT * FROM activated_packages ap RIGHT JOIN package p "
 //			+ "ON p.id = ap.package_id WHERE user_id = ?";
-	private static String SELECT_PACKAGE_INFO_BY_USER = "WITH temp_table AS (SELECT * FROM activated_packages WHERE user_id = 'UID0001') "
+	private static String SELECT_PACKAGE_INFO_BY_USER = "WITH temp_table AS (SELECT * FROM activated_packages WHERE user_id = ?) "
 			+ "SELECT user_id, package_price_week, package_price_month, duration, package_name, upgrade_request, deactivation_request "
 			+ "FROM package p LEFT JOIN temp_table t ON t.package_id = p.id;";
 	
@@ -54,10 +55,12 @@ public class PackageDAO {
 		DatabaseConfig dbInstance = DatabaseConfig.getDBInstance();
 		List<IPackage> activePkgList = new ArrayList<>();
 		IPackage instance = null;
+		String userId = User.getInstance().getUserId();
 		
 		try(Connection connection = dbInstance.getConnection()) {
 			
 			PreparedStatement stmtPackages = connection.prepareStatement(SELECT_PACKAGE_INFO_BY_USER);
+			stmtPackages.setString(1, userId);
 			
 //			stmtPackages.setString(1, "UID0001");
 //			stmtPackages.setString(2, "UID0001");

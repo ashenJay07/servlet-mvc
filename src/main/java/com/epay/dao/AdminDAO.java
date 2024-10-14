@@ -45,7 +45,7 @@ public class AdminDAO {
                 float amount = rs.getFloat("trans_amount");
                 String cardHolder = rs.getString("card_holder");
                 String email = rs.getString("email");
-                String tranDate = rs.getString("trans_date");
+                Date tranDate = rs.getDate("trans_date");
                 String userId = rs.getString("user_id");
                 
                 transactions.add(new PaymentInfo(id, amount, cardHolder, email, tranDate, userId));

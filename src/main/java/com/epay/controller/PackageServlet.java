@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.epay.dao.PackageDAO;
+import com.epay.model.users.User;
 import com.epay.utils.packages.EDoc;
 //import com.epay.dao.PackageDAO;
 import com.epay.utils.packages.FunBlaster;
@@ -26,6 +27,8 @@ public class PackageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println(User.getInstance().getUserId());
+		
 //		List<Package> pkgNames = packageDAO.getAllProducts();
 		List<IPackage> pkgInstances = new ArrayList<>();
 		List<IPackage> activePkgInstances = null;
